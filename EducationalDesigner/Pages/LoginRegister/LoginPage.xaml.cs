@@ -26,17 +26,17 @@ namespace EducationalProgram.Pages.LoginRegister
         }
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-/*          var currentUser = App.Context.User
-                .FirstOrDefault(p => p.UserLogin == TBoxLogin.Text && p.UserPassword == PBoxPassword.Password);
+            var currentUser = App.Context.Users
+                .FirstOrDefault(p => p.Login == tbLogin.Text && p.Password == tbPassword.Password);
             if (currentUser != null)
             {
                 App.CurrentUser = currentUser;
-                NavigationService.Navigate(new ProductPage());
+                /*NavigationService.Navigate(new ProductPage());*/
             }
             else
             {
                 MessageBox.Show("Пользователь не найден.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }*/
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

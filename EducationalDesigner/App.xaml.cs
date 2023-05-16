@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationalDesigner.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,7 @@ namespace EducationalProgram
     /// </summary>
     public partial class App : Application
     {
+        public static EducationalProgramDBEntities Context { get; } = new EducationalProgramDBEntities();
+        public static Users CurrentUser = null;
     }
 }
