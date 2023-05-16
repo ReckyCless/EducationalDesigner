@@ -31,7 +31,7 @@ namespace EducationalProgram.Pages.LoginRegister
             if (currentUser != null)
             {
                 App.CurrentUser = currentUser;
-                /*NavigationService.Navigate(new ProductPage());*/
+                NavigationService.Navigate(new EducationalDesigner.Pages.Views.Authors.AuthorsPage());
             }
             else
             {

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\10200285\Source\Repos\EducationalDesigner\EducationalDesigner\obj\Debug\
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\
 EducationalDesigner
 none
 false
 DEBUG;TRACE
-C:\Users\10200285\Source\Repos\EducationalDesigner\EducationalDesigner\App.xaml
-41580548152
+F:\Обучение\CourseProject\EducationalDesigner\App.xaml
+41836528348
 2-1830627971
-21-1992302049
-18-1614564641
-Pages\DataBase\Authors\AuthorsPage.xaml;Pages\LoginRegister\LoginPage.xaml;Pages\LoginRegister\RegisterPage.xaml;Windows\MainWindow.xaml;
+211751087791
+18-407938571
+Pages\LoginRegister\LoginPage.xaml;Pages\LoginRegister\RegisterPage.xaml;Pages\Views\Authors\AuthorsPages.xaml;Windows\MainWindow.xaml;
 
-True
+False
 
