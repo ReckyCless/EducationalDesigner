@@ -40,13 +40,9 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockOrder}" Text="id:"/>
-                                    <TextBlock Style="{StaticResource BlockOrder}"
-                                           Text="{Binding AuthorId}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
                                     <TextBlock Style="{StaticResource BlockOrder}" Text="Имя:"/>
-                                    <ListBox ItemsSource="{Binding Name}"/>
+                                    <TextBlock Style="{StaticResource BlockOrder}" 
+                                               Text="{Binding Name}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Style="{StaticResource BlockOrder}" Text="Фамилия:"/>
@@ -61,12 +57,11 @@
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Style="{StaticResource BlockOrder}" Text="Дата рождения:"/>
                                     <TextBlock Style="{StaticResource BlockOrder}"
-                                           Text="{Binding DateOfBirth}"/>
+                                           Text="{Binding DateOfBirth, StringFormat=dd-MM-yyyy}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Style="{StaticResource BlockOrder}" Text="Факультет:"/>
-                                    <TextBlock Style="{StaticResource BlockOrder}"
-                                           Text="{Binding Department}"/>
+                                    <TextBlock Style="{StaticResource BlockOrder}" Text="{Binding Department.DepartmentName}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Style="{StaticResource BlockOrder}" Text="Фото:"/>

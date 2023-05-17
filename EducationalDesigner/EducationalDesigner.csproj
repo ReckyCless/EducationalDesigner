@@ -117,6 +117,12 @@
     <Compile Include="Models\Roles.cs">
       <DependentUpon>EducationalDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>EducationalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>EducationalDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\StudyField.cs">
       <DependentUpon>EducationalDBModel.tt</DependentUpon>
     </Compile>

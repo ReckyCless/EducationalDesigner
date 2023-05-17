@@ -35,17 +35,16 @@ namespace EducationalProgram
 
         private void FrameMain_ContentRendered(object sender, EventArgs e)
         {
-/*            if (FrameMain.Content != frameContent)
+            if (frameMain.Content != frameContent)
             {
                 if (App.CurrentUser != null)
-                    TBlockUsername.Text = App.CurrentUser.UserSurname + "\n" + App.CurrentUser.UserName + "\n" +
-                        App.CurrentUser.UserPatronymic;
-                else TBlockUsername.Text = "Гость";
+                    tbkUsername.Text = App.CurrentUser.Surname + "\n" + App.CurrentUser.Name + "\n" + App.CurrentUser.Patronymic;
+                else tbkUsername.Text = "Гость";
             }
             else
             {
-                TBlockUsername.Text = String.Empty;
-            }*/
+                tbkUsername.Text = String.Empty;
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

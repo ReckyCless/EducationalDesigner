@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\10200285\Source\Repos\EducationalDesigner\EducationalDesigner\obj\Debug\
+C:\Users\10200285\Source\Repos\EducationalDesigner\EducationalDesigner\obj\Release\
 EducationalDesigner
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\10200285\Source\Repos\EducationalDesigner\EducationalDesigner\App.xaml
 41836528348
 2-1830627971
@@ -16,5 +16,5 @@ C:\Users\10200285\Source\Repos\EducationalDesigner\EducationalDesigner\App.xaml
 18-1614564641
 Pages\LoginRegister\LoginPage.xaml;Pages\LoginRegister\RegisterPage.xaml;Pages\Views\Authors\AuthorsPages.xaml;Windows\MainWindow.xaml;
 
-False
+True
 

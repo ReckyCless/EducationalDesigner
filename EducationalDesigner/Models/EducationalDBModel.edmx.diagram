@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="37d4f224b1264699ba4390111330262a" Name="Diagram1">
-        <EntityTypeShape EntityType="EducationalProgramDBModel.Authors" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationalProgramDBModel.Authors" Width="1.5" PointX="3.375" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EducationalProgramDBModel.Curriculum" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EducationalProgramDBModel.Department" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationalProgramDBModel.Department" Width="1.5" PointX="0.5" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EducationalProgramDBModel.EducationalProgram" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="EducationalProgramDBModel.Qualification" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="EducationalProgramDBModel.Roles" Width="1.5" PointX="5.75" PointY="5.5" IsExpanded="true" />
@@ -16,10 +16,12 @@
         <EntityTypeShape EntityType="EducationalProgramDBModel.Users" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="EducationalProgramDBModel.FK_EducationalProgram_Authors" ManuallyRouted="false" />
         <AssociationConnector Association="EducationalProgramDBModel.FK_Curriculum_EducationalProgram" ManuallyRouted="false" />
-        <AssociationConnector Association="EducationalProgramDBModel.FK_StudyField_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationalProgramDBModel.FK_StudyField_Department" ManuallyRouted="false" >
+        </AssociationConnector>
         <AssociationConnector Association="EducationalProgramDBModel.FK_EducationalProgram_Qualification" ManuallyRouted="false" />
         <AssociationConnector Association="EducationalProgramDBModel.FK_EducationalProgram_StudyField" ManuallyRouted="false" />
         <AssociationConnector Association="EducationalProgramDBModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationalProgramDBModel.FK_Authors_Department" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

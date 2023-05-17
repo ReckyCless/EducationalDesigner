@@ -18,6 +18,7 @@ namespace EducationalDesigner.Models
         public Department()
         {
             this.StudyField = new HashSet<StudyField>();
+            this.Authors = new HashSet<Authors>();
         }
     
         public int DepartmentId { get; set; }
@@ -25,5 +26,7 @@ namespace EducationalDesigner.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudyField> StudyField { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Authors> Authors { get; set; }
     }
 }

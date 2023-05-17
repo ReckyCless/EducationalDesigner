@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EducationalProgram"
         mc:Ignorable="d"
-        Title="Конструктор ОП" Height="550" Width="820" MinHeight="550" MinWidth="820" Icon="../Resources/icon.ico" Loaded="Window_Loaded">
+        Title="Конструктор ОП" Height="550" Width="820" MinHeight="550" MinWidth="820" Icon="/Resources/icon.ico" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="85"/>
@@ -14,9 +14,9 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="{StaticResource ColorSecondary}"></Grid>
         <Grid Grid.Row="2" Background="{StaticResource ColorSecondary}"></Grid>
-        <Image Source="/Resources/logo.ico" Width="100" HorizontalAlignment="Left"></Image>
-        <TextBlock Style="{StaticResource BlockCommon}" Margin="10" Name="tbLockUsername" HorizontalAlignment="Right" Width="200"></TextBlock>
-        <TextBlock Style="{StaticResource BlockHeader}" Text="{Binding ElementName=FrameMain, Path=Content.Title}"/>
+        <Image Source="/Resources/icon.ico" HorizontalAlignment="Left" Margin="30,5,0,0"></Image>
+        <TextBlock Style="{StaticResource BlockCommon}" Margin="10" Name="tbkUsername" HorizontalAlignment="Right" Width="200"/>
+        <TextBlock Style="{StaticResource BlockHeader}" Text="{Binding ElementName=frameMain, Path=Content.Title}"/>
         <Frame Name="frameMain" NavigationUIVisibility="Hidden" Grid.Row="1" ContentRendered="FrameMain_ContentRendered"/>
         <Button Content="Назад" HorizontalAlignment="Center" Name="btnBack" Click="BtnBack_Click" Grid.Row="2"></Button>
     </Grid>

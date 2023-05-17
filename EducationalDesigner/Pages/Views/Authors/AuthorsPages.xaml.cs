@@ -37,12 +37,12 @@ namespace EducationalDesigner.Pages.Views.Authors
             UpdateOrders();
         }
 
-               private void BtnEdit_Click(object sender, RoutedEventArgs e)
-                {
-                    /*var button = sender as Button;
-                    var currentOrder = button.DataContext as Entities.Order;
-                    NavigationService.Navigate(new EditOrderPage(currentOrder));*/
-                }
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            /*var button = sender as Button;
+            var currentOrder = button.DataContext as Entities.Order;
+            NavigationService.Navigate(new EditOrderPage(currentOrder));*/
+        }
 
         private void UpdateOrders()
         {
