@@ -64,15 +64,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Pages\LoginRegister\LoginPage.xaml">
+    <Page Include="Pages\LoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\LoginRegister\RegisterPage.xaml">
+    <Page Include="Pages\RegisterPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Views\Authors\AuthorsPages.xaml">
+    <Page Include="Pages\Views\RolesAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\AuthorsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\RolesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -85,61 +93,61 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Authors.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
+      <DependentUpon>EducationalProgramDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Curriculum.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
+      <DependentUpon>EducationalProgramDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Department.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EducationalDBModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EducationalDBModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EducationalDBModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EducationalDBModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EducationalDBModel.edmx</DependentUpon>
+      <DependentUpon>EducationalProgramDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EducationalProgram.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
+      <DependentUpon>EducationalProgramDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EducationalProgramDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EducationalProgramDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EducationalProgramDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EducationalProgramDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EducationalProgramDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EducationalProgramDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Qualification.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
+      <DependentUpon>EducationalProgramDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Roles.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
+      <DependentUpon>EducationalProgramDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StudyField.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
+      <DependentUpon>EducationalProgramDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
+      <DependentUpon>EducationalProgramDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users.cs">
-      <DependentUpon>EducationalDBModel.tt</DependentUpon>
+      <DependentUpon>EducationalProgramDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoginRegister\LoginPage.xaml.cs">
+    <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoginRegister\RegisterPage.xaml.cs">
+    <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Views\Authors\AuthorsPages.xaml.cs">
-      <DependentUpon>AuthorsPages.xaml</DependentUpon>
+    <Compile Include="Pages\Views\RolesAddEditPage.xaml.cs">
+      <DependentUpon>RolesAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\AuthorsPage.xaml.cs">
+      <DependentUpon>AuthorsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\RolesPage.xaml.cs">
+      <DependentUpon>RolesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -164,12 +172,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\EducationalDBModel.edmx">
+    <EntityDeploy Include="Models\EducationalProgramDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EducationalDBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>EducationalProgramDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\EducationalDBModel.edmx.diagram">
-      <DependentUpon>EducationalDBModel.edmx</DependentUpon>
+    <None Include="Models\EducationalProgramDBModel.edmx.diagram">
+      <DependentUpon>EducationalProgramDBModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -181,22 +189,33 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\EducationalDBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EducationalDBModel.edmx</DependentUpon>
-      <LastGenOutput>EducationalDBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\EducationalDBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EducationalDBModel.edmx</DependentUpon>
-      <LastGenOutput>EducationalDBModel.cs</LastGenOutput>
-    </Content>
+    <Resource Include="Resources\Alexandr.jpg" />
+    <Resource Include="Resources\Armais.jpg" />
+    <Resource Include="Resources\Pavel.jpg" />
+    <Resource Include="Resources\Valentina.jpg" />
+    <Resource Include="Resources\Viktor.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\EducationalProgramDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EducationalProgramDBModel.edmx</DependentUpon>
+      <LastGenOutput>EducationalProgramDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EducationalProgramDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EducationalProgramDBModel.edmx</DependentUpon>
+      <LastGenOutput>EducationalProgramDBModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

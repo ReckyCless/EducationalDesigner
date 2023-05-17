@@ -21,9 +21,6 @@ F:\Обучение\EducationalDesigner\EducationalDesigner\obj\Debug\Educationa
 F:\Обучение\EducationalDesigner\EducationalDesigner\obj\Debug\EducationalDesigner.pdb
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\EducationalDesigner.csproj.AssemblyReference.cache
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\EducationalDesigner.csproj.SuggestedBindingRedirects.cache
-F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\LoginRegister\LoginPage.g.cs
-F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\LoginRegister\RegisterPage.g.cs
-F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\Authors\AuthorsPages.g.cs
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Windows\MainWindow.g.cs
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\App.g.cs
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\EducationalDesigner_Content.g.cs
@@ -40,10 +37,7 @@ F:\Обучение\CourseProject\EducationalDesigner\bin\Debug\EntityFramework.
 F:\Обучение\CourseProject\EducationalDesigner\bin\Debug\EntityFramework.SqlServer.xml
 F:\Обучение\CourseProject\EducationalDesigner\bin\Debug\ru\EntityFramework.resources.dll
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\App.baml
-F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\LoginRegister\LoginPage.baml
-F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\LoginRegister\RegisterPage.baml
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Windows\MainWindow.baml
-F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\Authors\AuthorsPages.baml
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\EducationalDesigner.g.resources
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\EducationalDesigner.Properties.Resources.resources
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\EducationalDesigner.csproj.GenerateResource.cache
@@ -79,3 +73,13 @@ C:\Users\10200285\Source\Repos\EducationalDesigner\EducationalDesigner\obj\Debug
 C:\Users\10200285\Source\Repos\EducationalDesigner\EducationalDesigner\obj\Debug\EducationalDesigner.csproj.CopyComplete
 C:\Users\10200285\Source\Repos\EducationalDesigner\EducationalDesigner\obj\Debug\EducationalDesigner.exe
 C:\Users\10200285\Source\Repos\EducationalDesigner\EducationalDesigner\obj\Debug\EducationalDesigner.pdb
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\AuthorsPage.g.cs
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\AuthorsPage.baml
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\RolesPage.g.cs
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\RolesPage.baml
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\LoginPage.g.cs
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\RegisterPage.g.cs
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\LoginPage.baml
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\RegisterPage.baml
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\RolesAddEditPage.g.cs
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\RolesAddEditPage.baml

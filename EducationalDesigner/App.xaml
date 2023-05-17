@@ -98,7 +98,7 @@
             <Setter Property="Height" Value="100"/>
             <Setter Property="Width" Value="350"/>
         </Style>
-        <Style TargetType="TextBlock" x:Key="BlockOrder">
+        <Style TargetType="TextBlock" x:Key="BlockAuthor">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -106,7 +106,7 @@
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Width" Value="150"/>
-            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="TextAlignment" Value="Center"/>
         </Style>
         <Style TargetType="DatePicker">
             <Setter Property="Margin" Value="40, 5, 0, 5"/>
@@ -116,9 +116,9 @@
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Width" Value="150"/>
         </Style>
-        <Style TargetType="Image" x:Key="ProductImage">
+        <Style TargetType="Image" x:Key="Photo">
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="Height" Value="125"/>
+            <Setter Property="Height" Value="250"/>
         </Style>
     </Application.Resources>
 </Application>

@@ -24,7 +24,7 @@ namespace EducationalProgram
         public MainWindow()
         {
             InitializeComponent();
-            frameMain.Navigate(new Pages.LoginRegister.LoginPage());
+            frameMain.Navigate(new Pages.LoginPage());
         }
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {

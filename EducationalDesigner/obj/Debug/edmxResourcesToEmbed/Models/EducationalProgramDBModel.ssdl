@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище EducationalProgramDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+    </Key>
+    <Property Name="AuthorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="150" />
+    <Property Name="DateOfBirth" Type="date" Nullable="false" />
+    <Property Name="Department" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Curriculum">
+    <Key>
+      <PropertyRef Name="СurriculumId" />
+    </Key>
+    <Property Name="СurriculumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EducationalProgram" Type="int" Nullable="false" />
+    <Property Name="HourInYear" Type="int" Nullable="false" />
+    <Property Name="HoursInWeek" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="MinScore" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EducationalProgram">
+    <Key>
+      <PropertyRef Name="EducationalProgramId" />
+    </Key>
+    <Property Name="EducationalProgramId" Type="int" Nullable="false" />
+    <Property Name="StudyFiled" Type="int" Nullable="false" />
+    <Property Name="Qualification" Type="int" Nullable="false" />
+    <Property Name="ProgramName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CreationDate" Type="date" Nullable="false" />
+    <Property Name="Author" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Qualification">
+    <Key>
+      <PropertyRef Name="QualificationId" />
+    </Key>
+    <Property Name="QualificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QualificationName" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudyField">
+    <Key>
+      <PropertyRef Name="StudyFieldId" />
+    </Key>
+    <Property Name="StudyFieldId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudyFieldName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Department" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="150" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Role" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Authors_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="1" />
+    <End Role="Authors" Type="Self.Authors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="Authors">
+        <PropertyRef Name="Department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Curriculum_EducationalProgram">
+    <End Role="EducationalProgram" Type="Self.EducationalProgram" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Curriculum" Type="Self.Curriculum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EducationalProgram">
+        <PropertyRef Name="EducationalProgramId" />
+      </Principal>
+      <Dependent Role="Curriculum">
+        <PropertyRef Name="EducationalProgram" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EducationalProgram_Authors">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EducationalProgram" Type="Self.EducationalProgram" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="EducationalProgram">
+        <PropertyRef Name="Author" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EducationalProgram_Qualification">
+    <End Role="Qualification" Type="Self.Qualification" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EducationalProgram" Type="Self.EducationalProgram" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Qualification">
+        <PropertyRef Name="QualificationId" />
+      </Principal>
+      <Dependent Role="EducationalProgram">
+        <PropertyRef Name="Qualification" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EducationalProgram_StudyField">
+    <End Role="StudyField" Type="Self.StudyField" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EducationalProgram" Type="Self.EducationalProgram" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudyField">
+        <PropertyRef Name="StudyFieldId" />
+      </Principal>
+      <Dependent Role="EducationalProgram">
+        <PropertyRef Name="StudyFiled" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudyField_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="StudyField" Type="Self.StudyField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="StudyField">
+        <PropertyRef Name="Department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище EducationalProgramDBModelContainer">
+    <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Curriculum" EntityType="Self.Curriculum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EducationalProgram" EntityType="Self.EducationalProgram" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Qualification" EntityType="Self.Qualification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudyField" EntityType="Self.StudyField" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Authors_Department" Association="Self.FK_Authors_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Authors" EntitySet="Authors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Curriculum_EducationalProgram" Association="Self.FK_Curriculum_EducationalProgram">
+      <End Role="EducationalProgram" EntitySet="EducationalProgram" />
+      <End Role="Curriculum" EntitySet="Curriculum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EducationalProgram_Authors" Association="Self.FK_EducationalProgram_Authors">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="EducationalProgram" EntitySet="EducationalProgram" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EducationalProgram_Qualification" Association="Self.FK_EducationalProgram_Qualification">
+      <End Role="Qualification" EntitySet="Qualification" />
+      <End Role="EducationalProgram" EntitySet="EducationalProgram" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EducationalProgram_StudyField" Association="Self.FK_EducationalProgram_StudyField">
+      <End Role="StudyField" EntitySet="StudyField" />
+      <End Role="EducationalProgram" EntitySet="EducationalProgram" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudyField_Department" Association="Self.FK_StudyField_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="StudyField" EntitySet="StudyField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
