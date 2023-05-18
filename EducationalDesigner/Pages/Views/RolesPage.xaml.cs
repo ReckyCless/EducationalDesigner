@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace EducationalDesigner.Pages.Views
 {
     /// <summary>
@@ -25,16 +24,15 @@ namespace EducationalDesigner.Pages.Views
         public RolesPage()
         {
             InitializeComponent();
-            if (App.CurrentUser == null || App.CurrentUser.Role == 2)
+            if (App.CurrentUser.Role == 2)
             {
-/*                btnOrderList.Visibility = Visibility.Collapsed;
-                btnAddProduct.Visibility = Visibility.Collapsed;*/
+                btnAdd.Visibility = Visibility.Collapsed;
+                btnDelete.Visibility = Visibility.Collapsed;
             }
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateProduct();
+            UpdateProduct();    
         }
 
         private void cbxSortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,7 +77,10 @@ namespace EducationalDesigner.Pages.Views
         }
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
+            {
                 NavigationService.Navigate(new RolesAddEditPage((sender as ListViewItem).Content as Models.Roles));
+            }
         }
 
         private void UpdateProduct()

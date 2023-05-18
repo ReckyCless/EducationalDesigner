@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace EducationalDesigner.Pages.Views
 {
@@ -32,10 +33,13 @@ namespace EducationalDesigner.Pages.Views
             }
             DataContext = currentElem;
         }
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[a-zA-Zа-яА-Я]");
+            e.Handled = !regex.IsMatch(e.Text);
+        }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
                 StringBuilder err = new StringBuilder();
             if (string.IsNullOrWhiteSpace(currentElem.RoleName))
                 err.AppendLine("Укажите название");
@@ -44,6 +48,12 @@ namespace EducationalDesigner.Pages.Views
                 MessageBox.Show(err.ToString());
                 return;
             }
+            if (currentElem.RoleId == 0)
+            {
+                App.Context.Roles.Add(currentElem);
+            }
+            try 
+            {
                 App.Context.SaveChanges();
                 MessageBox.Show("Данные сохранены");
                 NavigationService.GoBack();

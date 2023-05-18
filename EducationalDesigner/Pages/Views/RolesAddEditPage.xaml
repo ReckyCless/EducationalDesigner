@@ -13,7 +13,7 @@
             <StackPanel VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Название роли*"></TextBlock>
-                    <TextBox Text="{Binding RoleName}" Name="tbRoleName"></TextBox>
+                    <TextBox Text="{Binding RoleName}" PreviewTextInput="NumberValidationTextBox" MaxLength="200"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Height="30" Width="200" Margin="15" Name="btnSave" Click="btnSave_Click" Content="Coxpанить"></Button>

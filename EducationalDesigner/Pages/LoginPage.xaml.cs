@@ -26,7 +26,8 @@ namespace EducationalProgram.Pages
         }
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            var currentUser = App.Context.Users
+            var currentUser = App.Context.Users.Where(p => p.Login == tbLogin.Text && p.Password == tbPassword.Password)
+                .AsEnumerable()
                 .FirstOrDefault(p => p.Login == tbLogin.Text && p.Password == tbPassword.Password);
             if (currentUser != null)
             {
