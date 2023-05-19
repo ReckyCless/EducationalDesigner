@@ -16,20 +16,21 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <ComboBox Name="cbxSortBy" SelectionChanged="cbxSortBy_SelectionChanged">
-                <ComboBoxItem Content="По возрастанию цены"></ComboBoxItem>
-                <ComboBoxItem Content="По убыванию цены"></ComboBoxItem>
+            <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged">
+                <ComboBoxItem Content="Без сортировки"></ComboBoxItem>
+                <ComboBoxItem Content="По возрастанию"></ComboBoxItem>
+                <ComboBoxItem Content="По убыванию"></ComboBoxItem>
             </ComboBox>
-            <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged"></TextBox>
+            <TextBox x:Name="tbSearch" TextChanged="TbSearch_TextChanged"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <TextBlock Style="{StaticResource BlockCommon}" TextAlignment="Center" Name="tbkItemCounter" Width="auto"></TextBlock>
         </StackPanel>
-        <ListView Grid.Row="2" Name="lViewRoles">
+        <ListView Grid.Row="2" Name="LViewRoles">
             <ListView.ItemContainerStyle>
-            <Style TargetType="{x:Type ListViewItem}">
-                <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
-            </Style>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+                </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
@@ -37,9 +38,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <StackPanel Grid.Row="3" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Height="35" Width="50" Content="←" FontSize="22" Name="btnPagePrev" Click="BtnPagePrev_Click"/>
+            <ComboBox Width="60" Name="cboxCurrentPageSelection" SelectionChanged="CBoxCurrentPageSelection_SelectionChanged" SelectedIndex="0"/>
+            <Button Height="35" Width="50" Content="→" FontSize="22" Name="btnPageNext" Click="BtnPageNext_Click"/>
+        </StackPanel>
         <Button HorizontalAlignment="Right" Grid.Row="3"
-                Content="Добавить" Name="btnAdd" Click="btnAdd_Click"/>
+                Content="Добавить" Visibility="Collapsed" Name="btnAdd" Click="BtnAdd_Click"/>
         <Button HorizontalAlignment="Left" Grid.Row="3"
-                Content="Удалить" Name="btnDelete" Click="btnDelete_Click"/>
+                Content="Удалить" Visibility="Collapsed" Name="btnDelete" Click="BtnDelete_Click"/>
     </Grid>
 </Page>

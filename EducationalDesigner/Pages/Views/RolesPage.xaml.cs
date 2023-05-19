@@ -1,6 +1,7 @@
 ﻿using EducationalProgram;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,45 +21,47 @@ namespace EducationalDesigner.Pages.Views
     /// </summary>
     public partial class RolesPage : Page
     {
-        List<Models.Roles> ProductCart = new List<Models.Roles>();
+        private int PagesCount;
+        private int NumberOfPage = 0;
+        private int maxItemShow = 1;
+        List<Models.Roles> roles = new List<Models.Roles>();
         public RolesPage()
         {
             InitializeComponent();
-            if (App.CurrentUser.Role == 2)
+
+            if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
             {
-                btnAdd.Visibility = Visibility.Collapsed;
-                btnDelete.Visibility = Visibility.Collapsed;
+                btnAdd.Visibility = Visibility.Visible;
+                btnDelete.Visibility = Visibility.Visible;
             }
+            UpdateRoles();
+            UpdateComboBoxes();
         }
+
+        // Updating GridView on Events
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateProduct();    
+            UpdateRoles();    
         }
-
-        private void cbxSortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CBoxSortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateProduct();
+            UpdateRoles();
         }
-
-        private void ComboDiscount_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            UpdateProduct();
+            UpdateRoles();
+            UpdateComboBoxes();
+            cboxCurrentPageSelection.SelectedIndex = 0;
         }
 
-        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateProduct();
-        }
-
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        // Add + Delete buttons controls
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
            NavigationService.Navigate(new RolesAddEditPage(null));
         }
-
-
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var elemsToDelete = lViewRoles.SelectedItems.Cast<Models.Roles>().ToList();
+            var elemsToDelete = LViewRoles.SelectedItems.Cast<Models.Roles>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следующие {elemsToDelete.Count()} элементов?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -67,7 +70,8 @@ namespace EducationalDesigner.Pages.Views
                     App.Context.Roles.RemoveRange((IEnumerable<Models.Roles>)elemsToDelete);
                     App.Context.SaveChanges();
                     MessageBox.Show("Данные удалены!");
-                    UpdateProduct();
+                    UpdateRoles();
+                    UpdateComboBoxes();
                 }
                 catch (Exception ex)
                 {
@@ -75,6 +79,8 @@ namespace EducationalDesigner.Pages.Views
                 }
             }
         }
+
+        // Edit by double click on record
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
@@ -83,16 +89,84 @@ namespace EducationalDesigner.Pages.Views
             }
         }
 
-        private void UpdateProduct()
+        // Function of GridView update + Sorting
+        private void UpdateRoles()
         {
             var roles = App.Context.Roles.ToList();
+            switch (cboxSortBy.SelectedIndex)
+            {
+                case 1:
+                    roles = roles.OrderBy(p => p.RoleName).ToList();
+                    break;
+                case 2:
+                    roles = roles.OrderByDescending(p => p.RoleName).ToList();
+                    break;
+                default:
+                    roles = roles.OrderBy(p => p.RoleId).ToList();
+                    break;
+            }
             roles = roles.Where(p => p.RoleName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
-            lViewRoles.ItemsSource = null;
-            lViewRoles.ItemsSource = roles;
-            int countFind = lViewRoles.Items.Count;
-            tbkItemCounter.Text = countFind.ToString() + " из " + App.Context.Roles.Count().ToString();
-            if (countFind < 1)
+            int countFind = LViewRoles.Items.Count;
+            tbkItemCounter.Text = roles.Count.ToString() + " из " + App.Context.Roles.Count().ToString();
+            if (roles.Count % maxItemShow == 0)
+            {
+                PagesCount = roles.Count / maxItemShow;
+            }
+            else
+            {
+                PagesCount = (roles.Count / maxItemShow) + 1;
+            }
+
+            LViewRoles.ItemsSource = roles.Skip(maxItemShow * NumberOfPage).Take(maxItemShow).ToList();
+            CheckPages();
+            if (roles.Count < 1)
                 tbkItemCounter.Text += "\nПо вашему запросу ничего не найдено. Измените фильтры.";
+        }
+
+        // Paging controls buttons
+        private void BtnPagePrev_Click(object sender, RoutedEventArgs e)
+        {
+            NumberOfPage--;
+            cboxCurrentPageSelection.Text = (NumberOfPage + 1).ToString();
+        }
+        private void BtnPageNext_Click(object sender, RoutedEventArgs e)
+        {
+            NumberOfPage++;
+            cboxCurrentPageSelection.Text = (NumberOfPage + 1).ToString();
+        }
+        private void CBoxCurrentPageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NumberOfPage = cboxCurrentPageSelection.SelectedIndex;
+            UpdateRoles();
+        }
+
+        // Turning ON/OFF paging controls
+        private void CheckPages()
+        {
+            if (NumberOfPage > 0)
+            {
+                btnPagePrev.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnPagePrev.Visibility = Visibility.Hidden;
+            }
+            if (NumberOfPage < PagesCount - 1)
+            {
+                btnPageNext.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnPageNext.Visibility = Visibility.Hidden;
+            }
+        }
+        private void UpdateComboBoxes()
+        {
+            cboxCurrentPageSelection.Items.Clear();
+            for (int i = 1; i <= PagesCount; i++)
+            {
+                cboxCurrentPageSelection.Items.Add(i.ToString());
+            }
         }
     }
 }
