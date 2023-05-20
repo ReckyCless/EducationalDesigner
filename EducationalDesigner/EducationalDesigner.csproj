@@ -72,6 +72,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\Views\DepartmentAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\DepartmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\QualificationAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\QualificationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Views\RolesAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +97,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Views\RolesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\StudyFieldAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\StudyFieldPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\UsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,6 +168,18 @@
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Views\DepartmentAddEditPage.xaml.cs">
+      <DependentUpon>DepartmentAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\DepartmentPage.xaml.cs">
+      <DependentUpon>DepartmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\QualificationAddEditPage.xaml.cs">
+      <DependentUpon>QualificationAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\QualificationPage.xaml.cs">
+      <DependentUpon>QualificationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Views\RolesAddEditPage.xaml.cs">
       <DependentUpon>RolesAddEditPage.xaml</DependentUpon>
     </Compile>
@@ -148,6 +188,15 @@
     </Compile>
     <Compile Include="Pages\Views\RolesPage.xaml.cs">
       <DependentUpon>RolesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\StudyFieldAddEditPage.xaml.cs">
+      <DependentUpon>StudyFieldAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\StudyFieldPage.xaml.cs">
+      <DependentUpon>StudyFieldPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\UsersPage.xaml.cs">
+      <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

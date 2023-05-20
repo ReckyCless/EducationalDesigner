@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\Обучение\CourseProject\EducationalDesigner\App.xaml
-62034751048
+131876174810
 2-1417271109
-23-697194175
+302079747795
 18-407938571
-Pages\LoginPage.xaml;Pages\RegisterPage.xaml;Pages\Views\RolesAddEditPage.xaml;Pages\Views\AuthorsPage.xaml;Pages\Views\RolesPage.xaml;Windows\MainWindow.xaml;
+Pages\LoginPage.xaml;Pages\RegisterPage.xaml;Pages\Views\DepartmentAddEditPage.xaml;Pages\Views\DepartmentPage.xaml;Pages\Views\QualificationAddEditPage.xaml;Pages\Views\QualificationPage.xaml;Pages\Views\RolesAddEditPage.xaml;Pages\Views\AuthorsPage.xaml;Pages\Views\RolesPage.xaml;Pages\Views\StudyFieldAddEditPage.xaml;Pages\Views\StudyFieldPage.xaml;Pages\Views\UsersPage.xaml;Windows\MainWindow.xaml;
 
-False
+True
 

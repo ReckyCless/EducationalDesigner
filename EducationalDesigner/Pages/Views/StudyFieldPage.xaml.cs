@@ -1,6 +1,7 @@
 ﻿using EducationalProgram;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,17 +19,23 @@ using EducationalDesigner.Models;
 namespace EducationalDesigner.Pages.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AuthorsPage.xaml
+    /// Логика взаимодействия для StudyFieldPage.xaml
     /// </summary>
-    public partial class AuthorsPage : Page
+    public partial class StudyFieldPage : Page
     {
         private int PagesCount;
         private int NumberOfPage = 0;
-        private int maxItemShow = 4;
-        List<Authors> authors = new List<Authors>();
-        public AuthorsPage()
+        private int maxItemShow = 20;
+        List<StudyField> studyfield = new List<StudyField>();
+        public StudyFieldPage()
         {
             InitializeComponent();
+
+            if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
+            {
+                btnAdd.Visibility = Visibility.Visible;
+                btnDelete.Visibility = Visibility.Visible;
+            }
 
             var department = App.Context.Department.ToList();
             department.Insert(0, new Department
@@ -37,52 +44,47 @@ namespace EducationalDesigner.Pages.Views
             });
             cboxOrdBy.ItemsSource = department;
 
-            if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
-            {
-                btnAdd.Visibility = Visibility.Visible;
-                btnDelete.Visibility = Visibility.Visible;
-            }
-            UpdateAuthors();
+            UpdateStudyFields();
             UpdateComboBoxes();
         }
 
         // Updating GridView on Events
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateAuthors();
+            UpdateStudyFields();
         }
         private void CBoxSortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateAuthors();
+            UpdateStudyFields();
         }
         private void CBoxOrdBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateAuthors();
+            UpdateStudyFields();
         }
         private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            UpdateAuthors();
+            UpdateStudyFields();
             UpdateComboBoxes();
             cboxCurrentPageSelection.SelectedIndex = 0;
         }
 
-        // Add + Edit + Delete buttons controls
+        // Add + Delete buttons controls
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            /*NavigationService.Navigate(new AuthorsAddEditPage(null));*/
+            NavigationService.Navigate(new StudyFieldAddEditPage(null));
         }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var elemsToDelete = LViewAuthors.SelectedItems.Cast<Models.Authors>().ToList();
+            var elemsToDelete = LViewStudyFields.SelectedItems.Cast<StudyField>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следующие {elemsToDelete.Count()} элементов?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    App.Context.Roles.RemoveRange((IEnumerable<Models.Roles>)elemsToDelete);
+                    App.Context.StudyField.RemoveRange((IEnumerable<StudyField>)elemsToDelete);
                     App.Context.SaveChanges();
                     MessageBox.Show("Данные удалены!");
-                    UpdateAuthors();
+                    UpdateStudyFields();
                     UpdateComboBoxes();
                 }
                 catch (Exception ex)
@@ -91,51 +93,50 @@ namespace EducationalDesigner.Pages.Views
                 }
             }
         }
+
         // Edit by double click on record
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
             {
-                /*NavigationService.Navigate(new AuthorsAddEditPage((sender as ListViewItem).Content as Models.Authors));*/
+                NavigationService.Navigate(new StudyFieldAddEditPage((sender as ListViewItem).Content as StudyField));
             }
         }
 
         // Function of GridView update + Sorting
-        private void UpdateAuthors()
+        private void UpdateStudyFields()
         {
-            var authors = App.Context.Authors.ToList();
+            var studyfield = App.Context.StudyField.ToList();
             switch (cboxSortBy.SelectedIndex)
             {
                 case 1:
-                    authors = authors.OrderBy(p => p.Name).OrderBy(p => p.Surname).OrderBy(p => p.Patronymic).ToList();
+                    studyfield = studyfield.OrderBy(p => p.StudyFieldName).ToList();
                     break;
                 case 2:
-                    authors = authors.OrderByDescending(p => p.Name).OrderBy(p => p.Surname).OrderBy(p => p.Patronymic).ToList();
+                    studyfield = studyfield.OrderByDescending(p => p.StudyFieldName).ToList();
                     break;
                 default:
-                    authors = authors.OrderBy(p => p.AuthorId).ToList();
+                    studyfield = studyfield.OrderBy(p => p.StudyFieldId).ToList();
                     break;
             }
-            if (cboxOrdBy.SelectedIndex != 0)
-            { 
-                authors = authors.Where(p => p.Department1 == cboxOrdBy.SelectedValue).ToList();
-            }
-            authors = authors.Where(p => (p.Name + p.Surname + p.Patronymic).ToLower().Contains(tbSearch.Text.ToLower())).ToList();
-            int countFind = LViewAuthors.Items.Count;
-            tbkItemCounter.Text = authors.Count.ToString() + " из " + App.Context.Authors.Count().ToString();
-            
-            if (authors.Count % maxItemShow == 0)
+            studyfield = studyfield.Where(p => p.StudyFieldName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
+            int countFind = LViewStudyFields.Items.Count;
+            tbkItemCounter.Text = studyfield.Count.ToString() + " из " + App.Context.StudyField.Count().ToString();
+            if (studyfield.Count % maxItemShow == 0)
             {
-                PagesCount = authors.Count / maxItemShow;
+                PagesCount = studyfield.Count / maxItemShow;
             }
             else
             {
-                PagesCount = (authors.Count / maxItemShow) + 1;
+                PagesCount = (studyfield.Count / maxItemShow) + 1;
             }
-
-            LViewAuthors.ItemsSource = authors.Skip(maxItemShow * NumberOfPage).Take(maxItemShow).ToList();
+            if (cboxOrdBy.SelectedIndex != 0)
+            {
+                studyfield = studyfield.Where(p => p.Department1 == cboxOrdBy.SelectedValue).ToList();
+            }
+            LViewStudyFields.ItemsSource = studyfield.Skip(maxItemShow * NumberOfPage).Take(maxItemShow).ToList();
             CheckPages();
-            if (authors.Count < 1)
+            if (studyfield.Count < 1)
                 tbkItemCounter.Text += "\nПо вашему запросу ничего не найдено. Измените фильтры.";
         }
 
@@ -153,7 +154,7 @@ namespace EducationalDesigner.Pages.Views
         private void CBoxCurrentPageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             NumberOfPage = cboxCurrentPageSelection.SelectedIndex;
-            UpdateAuthors();
+            UpdateStudyFields();
         }
 
         // Turning ON/OFF paging controls

@@ -32,7 +32,7 @@ namespace EducationalProgram.Pages
             if (currentUser != null)
             {
                 App.CurrentUser = currentUser;
-                NavigationService.Navigate(new EducationalDesigner.Pages.Views.RolesPage());
+                NavigationService.Navigate(new EducationalDesigner.Pages.Views.AuthorsPage());
             }
             else
             {

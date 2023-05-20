@@ -18,71 +18,59 @@ using EducationalDesigner.Models;
 namespace EducationalDesigner.Pages.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AuthorsPage.xaml
+    /// Логика взаимодействия для QualificationPage.xaml
     /// </summary>
-    public partial class AuthorsPage : Page
+    public partial class QualificationPage : Page
     {
         private int PagesCount;
         private int NumberOfPage = 0;
-        private int maxItemShow = 4;
-        List<Authors> authors = new List<Authors>();
-        public AuthorsPage()
+        private int maxItemShow = 20;
+        List<Qualification> qualification = new List<Qualification>();
+        public QualificationPage()
         {
             InitializeComponent();
-
-            var department = App.Context.Department.ToList();
-            department.Insert(0, new Department
-            {
-                DepartmentName = "Без сортировки"
-            });
-            cboxOrdBy.ItemsSource = department;
 
             if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
             {
                 btnAdd.Visibility = Visibility.Visible;
                 btnDelete.Visibility = Visibility.Visible;
             }
-            UpdateAuthors();
+            UpdateQualifications();
             UpdateComboBoxes();
         }
-
         // Updating GridView on Events
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateAuthors();
+            UpdateQualifications();
         }
         private void CBoxSortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateAuthors();
-        }
-        private void CBoxOrdBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateAuthors();
+            UpdateQualifications();
         }
         private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            UpdateAuthors();
+            UpdateQualifications();
             UpdateComboBoxes();
             cboxCurrentPageSelection.SelectedIndex = 0;
         }
 
-        // Add + Edit + Delete buttons controls
+        // Add + Delete buttons controls
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            /*NavigationService.Navigate(new AuthorsAddEditPage(null));*/
+            NavigationService.Navigate(new QualificationAddEditPage(null));
         }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var elemsToDelete = LViewAuthors.SelectedItems.Cast<Models.Authors>().ToList();
+            var elemsToDelete = LViewQualifications.SelectedItems.Cast<Qualification>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следующие {elemsToDelete.Count()} элементов?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    App.Context.Roles.RemoveRange((IEnumerable<Models.Roles>)elemsToDelete);
+                    App.Context.Qualification.RemoveRange((IEnumerable<Qualification>)elemsToDelete);
                     App.Context.SaveChanges();
                     MessageBox.Show("Данные удалены!");
-                    UpdateAuthors();
+                    UpdateQualifications();
                     UpdateComboBoxes();
                 }
                 catch (Exception ex)
@@ -91,51 +79,47 @@ namespace EducationalDesigner.Pages.Views
                 }
             }
         }
+
         // Edit by double click on record
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
             {
-                /*NavigationService.Navigate(new AuthorsAddEditPage((sender as ListViewItem).Content as Models.Authors));*/
+                NavigationService.Navigate(new QualificationAddEditPage((sender as ListViewItem).Content as Qualification));
             }
         }
 
         // Function of GridView update + Sorting
-        private void UpdateAuthors()
+        private void UpdateQualifications()
         {
-            var authors = App.Context.Authors.ToList();
+            var qualification = App.Context.Qualification.ToList();
             switch (cboxSortBy.SelectedIndex)
             {
                 case 1:
-                    authors = authors.OrderBy(p => p.Name).OrderBy(p => p.Surname).OrderBy(p => p.Patronymic).ToList();
+                    qualification = qualification.OrderBy(p => p.QualificationName).ToList();
                     break;
                 case 2:
-                    authors = authors.OrderByDescending(p => p.Name).OrderBy(p => p.Surname).OrderBy(p => p.Patronymic).ToList();
+                    qualification = qualification.OrderByDescending(p => p.QualificationName).ToList();
                     break;
                 default:
-                    authors = authors.OrderBy(p => p.AuthorId).ToList();
+                    qualification = qualification.OrderBy(p => p.QualificationId).ToList();
                     break;
             }
-            if (cboxOrdBy.SelectedIndex != 0)
-            { 
-                authors = authors.Where(p => p.Department1 == cboxOrdBy.SelectedValue).ToList();
-            }
-            authors = authors.Where(p => (p.Name + p.Surname + p.Patronymic).ToLower().Contains(tbSearch.Text.ToLower())).ToList();
-            int countFind = LViewAuthors.Items.Count;
-            tbkItemCounter.Text = authors.Count.ToString() + " из " + App.Context.Authors.Count().ToString();
-            
-            if (authors.Count % maxItemShow == 0)
+            qualification = qualification.Where(p => p.QualificationName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
+            int countFind = LViewQualifications.Items.Count;
+            tbkItemCounter.Text = qualification.Count.ToString() + " из " + App.Context.Qualification.Count().ToString();
+            if (qualification.Count % maxItemShow == 0)
             {
-                PagesCount = authors.Count / maxItemShow;
+                PagesCount = qualification.Count / maxItemShow;
             }
             else
             {
-                PagesCount = (authors.Count / maxItemShow) + 1;
+                PagesCount = (qualification.Count / maxItemShow) + 1;
             }
 
-            LViewAuthors.ItemsSource = authors.Skip(maxItemShow * NumberOfPage).Take(maxItemShow).ToList();
+            LViewQualifications.ItemsSource = qualification.Skip(maxItemShow * NumberOfPage).Take(maxItemShow).ToList();
             CheckPages();
-            if (authors.Count < 1)
+            if (qualification.Count < 1)
                 tbkItemCounter.Text += "\nПо вашему запросу ничего не найдено. Измените фильтры.";
         }
 
@@ -153,7 +137,7 @@ namespace EducationalDesigner.Pages.Views
         private void CBoxCurrentPageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             NumberOfPage = cboxCurrentPageSelection.SelectedIndex;
-            UpdateAuthors();
+            UpdateQualifications();
         }
 
         // Turning ON/OFF paging controls

@@ -19,17 +19,17 @@ using EducationalDesigner.Models;
 namespace EducationalDesigner.Pages.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AddEditRolesPage.xaml
+    /// Логика взаимодействия для QualificationAddEditPage.xaml
     /// </summary>
-    public partial class RolesAddEditPage : Page
+    public partial class QualificationAddEditPage : Page
     {
-        private Roles currentElem = new Roles();
-        public RolesAddEditPage(Roles elemData)
+        private Qualification currentElem = new Qualification();
+        public QualificationAddEditPage(Qualification elemData)
         {
             InitializeComponent();
             if (elemData != null)
             {
-                Title = "Роли. Редактирование";
+                Title = "Квалификации. Редактирование";
                 currentElem = elemData;
             }
             DataContext = currentElem;
@@ -42,16 +42,16 @@ namespace EducationalDesigner.Pages.Views
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder err = new StringBuilder();
-            if (string.IsNullOrWhiteSpace(currentElem.RoleName))
+            if (string.IsNullOrWhiteSpace(currentElem.QualificationName))
                 err.AppendLine("Укажите название");
             if (err.Length > 0)
             {
                 MessageBox.Show(err.ToString());
                 return;
             }
-            if (currentElem.RoleId == 0)
+            if (currentElem.QualificationId == 0)
             {
-                App.Context.Roles.Add(currentElem);
+                App.Context.Qualification.Add(currentElem);
             }
             try
             {

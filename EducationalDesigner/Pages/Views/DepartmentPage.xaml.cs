@@ -1,6 +1,7 @@
 ﻿using EducationalProgram;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,71 +19,60 @@ using EducationalDesigner.Models;
 namespace EducationalDesigner.Pages.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AuthorsPage.xaml
+    /// Логика взаимодействия для DepartmentPage.xaml
     /// </summary>
-    public partial class AuthorsPage : Page
+    public partial class DepartmentPage : Page
     {
         private int PagesCount;
         private int NumberOfPage = 0;
-        private int maxItemShow = 4;
-        List<Authors> authors = new List<Authors>();
-        public AuthorsPage()
+        private int maxItemShow = 20;
+        List<Department> department = new List<Department>();
+        public DepartmentPage()
         {
             InitializeComponent();
-
-            var department = App.Context.Department.ToList();
-            department.Insert(0, new Department
-            {
-                DepartmentName = "Без сортировки"
-            });
-            cboxOrdBy.ItemsSource = department;
 
             if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
             {
                 btnAdd.Visibility = Visibility.Visible;
                 btnDelete.Visibility = Visibility.Visible;
             }
-            UpdateAuthors();
+            UpdateDepartments();
             UpdateComboBoxes();
         }
 
         // Updating GridView on Events
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateAuthors();
+            UpdateDepartments();
         }
         private void CBoxSortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateAuthors();
-        }
-        private void CBoxOrdBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateAuthors();
+            UpdateDepartments();
         }
         private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            UpdateAuthors();
+            UpdateDepartments();
             UpdateComboBoxes();
             cboxCurrentPageSelection.SelectedIndex = 0;
         }
 
-        // Add + Edit + Delete buttons controls
+        // Add + Delete buttons controls
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            /*NavigationService.Navigate(new AuthorsAddEditPage(null));*/
+            NavigationService.Navigate(new DepartmentAddEditPage(null));
         }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var elemsToDelete = LViewAuthors.SelectedItems.Cast<Models.Authors>().ToList();
+            var elemsToDelete = LViewDepartments.SelectedItems.Cast<Department>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следующие {elemsToDelete.Count()} элементов?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    App.Context.Roles.RemoveRange((IEnumerable<Models.Roles>)elemsToDelete);
+                    App.Context.Department.RemoveRange((IEnumerable<Department>)elemsToDelete);
                     App.Context.SaveChanges();
                     MessageBox.Show("Данные удалены!");
-                    UpdateAuthors();
+                    UpdateDepartments();
                     UpdateComboBoxes();
                 }
                 catch (Exception ex)
@@ -91,51 +81,47 @@ namespace EducationalDesigner.Pages.Views
                 }
             }
         }
+
         // Edit by double click on record
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
             {
-                /*NavigationService.Navigate(new AuthorsAddEditPage((sender as ListViewItem).Content as Models.Authors));*/
+                NavigationService.Navigate(new DepartmentAddEditPage((sender as ListViewItem).Content as Department));
             }
         }
 
         // Function of GridView update + Sorting
-        private void UpdateAuthors()
+        private void UpdateDepartments()
         {
-            var authors = App.Context.Authors.ToList();
+            var department = App.Context.Department.ToList();
             switch (cboxSortBy.SelectedIndex)
             {
                 case 1:
-                    authors = authors.OrderBy(p => p.Name).OrderBy(p => p.Surname).OrderBy(p => p.Patronymic).ToList();
+                    department = department.OrderBy(p => p.DepartmentName).ToList();
                     break;
                 case 2:
-                    authors = authors.OrderByDescending(p => p.Name).OrderBy(p => p.Surname).OrderBy(p => p.Patronymic).ToList();
+                    department = department.OrderByDescending(p => p.DepartmentName).ToList();
                     break;
                 default:
-                    authors = authors.OrderBy(p => p.AuthorId).ToList();
+                    department = department.OrderBy(p => p.DepartmentId).ToList();
                     break;
             }
-            if (cboxOrdBy.SelectedIndex != 0)
-            { 
-                authors = authors.Where(p => p.Department1 == cboxOrdBy.SelectedValue).ToList();
-            }
-            authors = authors.Where(p => (p.Name + p.Surname + p.Patronymic).ToLower().Contains(tbSearch.Text.ToLower())).ToList();
-            int countFind = LViewAuthors.Items.Count;
-            tbkItemCounter.Text = authors.Count.ToString() + " из " + App.Context.Authors.Count().ToString();
-            
-            if (authors.Count % maxItemShow == 0)
+            department = department.Where(p => p.DepartmentName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
+            int countFind = LViewDepartments.Items.Count;
+            tbkItemCounter.Text = department.Count.ToString() + " из " + App.Context.Department.Count().ToString();
+            if (department.Count % maxItemShow == 0)
             {
-                PagesCount = authors.Count / maxItemShow;
+                PagesCount = department.Count / maxItemShow;
             }
             else
             {
-                PagesCount = (authors.Count / maxItemShow) + 1;
+                PagesCount = (department.Count / maxItemShow) + 1;
             }
 
-            LViewAuthors.ItemsSource = authors.Skip(maxItemShow * NumberOfPage).Take(maxItemShow).ToList();
+            LViewDepartments.ItemsSource = department.Skip(maxItemShow * NumberOfPage).Take(maxItemShow).ToList();
             CheckPages();
-            if (authors.Count < 1)
+            if (department.Count < 1)
                 tbkItemCounter.Text += "\nПо вашему запросу ничего не найдено. Измените фильтры.";
         }
 
@@ -153,7 +139,7 @@ namespace EducationalDesigner.Pages.Views
         private void CBoxCurrentPageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             NumberOfPage = cboxCurrentPageSelection.SelectedIndex;
-            UpdateAuthors();
+            UpdateDepartments();
         }
 
         // Turning ON/OFF paging controls

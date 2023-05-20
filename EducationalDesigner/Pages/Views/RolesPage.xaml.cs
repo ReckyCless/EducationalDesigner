@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EducationalDesigner.Models;
+
 namespace EducationalDesigner.Pages.Views
 {
     /// <summary>
@@ -23,8 +25,8 @@ namespace EducationalDesigner.Pages.Views
     {
         private int PagesCount;
         private int NumberOfPage = 0;
-        private int maxItemShow = 1;
-        List<Models.Roles> roles = new List<Models.Roles>();
+        private int maxItemShow = 20;
+        List<Roles> roles = new List<Roles>();
         public RolesPage()
         {
             InitializeComponent();
@@ -61,13 +63,13 @@ namespace EducationalDesigner.Pages.Views
         }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var elemsToDelete = LViewRoles.SelectedItems.Cast<Models.Roles>().ToList();
+            var elemsToDelete = LViewRoles.SelectedItems.Cast<Roles>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следующие {elemsToDelete.Count()} элементов?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    App.Context.Roles.RemoveRange((IEnumerable<Models.Roles>)elemsToDelete);
+                    App.Context.Roles.RemoveRange((IEnumerable<Roles>)elemsToDelete);
                     App.Context.SaveChanges();
                     MessageBox.Show("Данные удалены!");
                     UpdateRoles();
@@ -85,7 +87,7 @@ namespace EducationalDesigner.Pages.Views
         {
             if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
             {
-                NavigationService.Navigate(new RolesAddEditPage((sender as ListViewItem).Content as Models.Roles));
+                NavigationService.Navigate(new RolesAddEditPage((sender as ListViewItem).Content as Roles));
             }
         }
 

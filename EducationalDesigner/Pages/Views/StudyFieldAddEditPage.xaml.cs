@@ -16,23 +16,25 @@ using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using EducationalDesigner.Models;
 
+
 namespace EducationalDesigner.Pages.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AddEditRolesPage.xaml
+    /// Логика взаимодействия для StudyFieldAddEditPage.xaml
     /// </summary>
-    public partial class RolesAddEditPage : Page
+    public partial class StudyFieldAddEditPage : Page
     {
-        private Roles currentElem = new Roles();
-        public RolesAddEditPage(Roles elemData)
+        private StudyField currentElem = new StudyField();
+        public StudyFieldAddEditPage(StudyField elemData)
         {
             InitializeComponent();
             if (elemData != null)
             {
-                Title = "Роли. Редактирование";
+                Title = "Направления. Редактирование";
                 currentElem = elemData;
             }
             DataContext = currentElem;
+            cboxDepartment.ItemsSource = App.Context.Department.ToList();
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
@@ -42,16 +44,18 @@ namespace EducationalDesigner.Pages.Views
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder err = new StringBuilder();
-            if (string.IsNullOrWhiteSpace(currentElem.RoleName))
+            if (string.IsNullOrWhiteSpace(currentElem.StudyFieldName))
                 err.AppendLine("Укажите название");
+            if (cboxDepartment.SelectedItem == null)
+                err.AppendLine("Укажите факультет");
             if (err.Length > 0)
             {
                 MessageBox.Show(err.ToString());
                 return;
             }
-            if (currentElem.RoleId == 0)
+            if (currentElem.StudyFieldId == 0)
             {
-                App.Context.Roles.Add(currentElem);
+                App.Context.StudyField.Add(currentElem);
             }
             try
             {
