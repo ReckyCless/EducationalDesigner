@@ -42,7 +42,6 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="{StaticResource ColorAccent}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
@@ -51,7 +50,15 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Image Source="{Binding Photo}" Style="{StaticResource Photo}"/>
+                                    <Image Style="{StaticResource Photo}">
+                                        <Image.Source>
+                                            <Binding Path="Photo" >
+                                                <Binding.TargetNullValue>
+                                                    <ImageSource>/Resources/default.png</ImageSource>
+                                                </Binding.TargetNullValue>
+                                            </Binding>
+                                        </Image.Source>
+                                    </Image>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Style="{StaticResource BlockCommon}" Text="Имя:"/>
@@ -79,7 +86,6 @@
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
-                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

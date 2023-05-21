@@ -26,7 +26,7 @@ namespace EducationalDesigner.Models
         public string Patronymic { get; set; }
         public System.DateTime DateOfBirth { get; set; }
         public int Department { get; set; }
-        public string Photo { get; set; }
+        public byte[] Photo { get; set; }
     
         public virtual Department Department1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

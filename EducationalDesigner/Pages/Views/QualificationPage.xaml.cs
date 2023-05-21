@@ -106,7 +106,7 @@ namespace EducationalDesigner.Pages.Views
                     break;
             }
             qualification = qualification.Where(p => p.QualificationName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
-            int countFind = LViewQualifications.Items.Count;
+
             tbkItemCounter.Text = qualification.Count.ToString() + " из " + App.Context.Qualification.Count().ToString();
             if (qualification.Count % maxItemShow == 0)
             {

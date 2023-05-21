@@ -72,11 +72,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\Views\AuthorsAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\CurriculumAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\CurriculumPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Views\DepartmentAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Views\DepartmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\EducationalProgramAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\EducationalProgramPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Views\StudyFieldPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\UsersAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,11 +192,26 @@
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Views\AuthorsAddEditPage.xaml.cs">
+      <DependentUpon>AuthorsAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\CurriculumAddEditPage.xaml.cs">
+      <DependentUpon>CurriculumAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\CurriculumPage.xaml.cs">
+      <DependentUpon>CurriculumPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Views\DepartmentAddEditPage.xaml.cs">
       <DependentUpon>DepartmentAddEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Views\DepartmentPage.xaml.cs">
       <DependentUpon>DepartmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\EducationalProgramAddEditPage.xaml.cs">
+      <DependentUpon>EducationalProgramAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\EducationalProgramPage.xaml.cs">
+      <DependentUpon>EducationalProgramPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Views\QualificationAddEditPage.xaml.cs">
       <DependentUpon>QualificationAddEditPage.xaml</DependentUpon>
@@ -194,6 +233,9 @@
     </Compile>
     <Compile Include="Pages\Views\StudyFieldPage.xaml.cs">
       <DependentUpon>StudyFieldPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\UsersAddEditPage.xaml.cs">
+      <DependentUpon>UsersAddEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Views\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
@@ -250,10 +292,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Resource Include="Resources\default.png" />
-  </ItemGroup>
   <ItemGroup>
     <Content Include="Models\EducationalProgramDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -265,6 +303,9 @@
       <DependentUpon>EducationalProgramDBModel.edmx</DependentUpon>
       <LastGenOutput>EducationalProgramDBModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\default.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

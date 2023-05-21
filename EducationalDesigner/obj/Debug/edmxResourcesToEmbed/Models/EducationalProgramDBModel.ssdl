@@ -10,7 +10,7 @@
     <Property Name="Patronymic" Type="nvarchar" MaxLength="150" />
     <Property Name="DateOfBirth" Type="date" Nullable="false" />
     <Property Name="Department" Type="int" Nullable="false" />
-    <Property Name="Photo" Type="nvarchar" MaxLength="500" />
+    <Property Name="Photo" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Curriculum">
     <Key>
@@ -34,7 +34,7 @@
     <Key>
       <PropertyRef Name="EducationalProgramId" />
     </Key>
-    <Property Name="EducationalProgramId" Type="int" Nullable="false" />
+    <Property Name="EducationalProgramId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudyFiled" Type="int" Nullable="false" />
     <Property Name="Qualification" Type="int" Nullable="false" />
     <Property Name="ProgramName" Type="nvarchar" MaxLength="200" Nullable="false" />

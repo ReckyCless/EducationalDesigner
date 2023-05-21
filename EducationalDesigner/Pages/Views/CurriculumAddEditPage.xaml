@@ -1,0 +1,41 @@
+﻿<Page x:Class="EducationalDesigner.Pages.Views.CurriculumAddEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EducationalDesigner.Pages.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="УП. Добавление">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Образовательная программа*" Width="auto"/>
+                    <ComboBox SelectedItem="{Binding EducationalProgram}" Name="cboxEducationalProgram" DisplayMemberPath="ProgramName"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Часов в год*" Width="auto"/>
+                    <TextBox Text="{Binding HourInYear}" PreviewTextInput="NumberValidationTextBox"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Часов в неделю*" Width="auto"/>
+                    <TextBox Text="{Binding HoursInWeek}" PreviewTextInput="NumberValidationTextBox"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Дата начала*" Width="auto"/>
+                    <DatePicker Name="dpickStartDate" Width="180" Margin="0" SelectedDate="{Binding StartDate}"
+                                DisplayDateEnd="{Binding Mode=OneWay, Source=DateTime.Today}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Минимальный балл*" Width="auto"/>
+                    <TextBox Text="{Binding MinScore}" PreviewTextInput="NumberValidationTextBox"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Height="30" Width="200" Margin="15" Name="btnSave" Click="BtnSave_Click" Content="Coxpанить"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

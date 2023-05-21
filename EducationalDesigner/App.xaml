@@ -119,6 +119,7 @@
         <Style TargetType="Image" x:Key="Photo">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Height" Value="250"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
     </Application.Resources>
 </Application>

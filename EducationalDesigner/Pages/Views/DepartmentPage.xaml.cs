@@ -108,7 +108,7 @@ namespace EducationalDesigner.Pages.Views
                     break;
             }
             department = department.Where(p => p.DepartmentName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
-            int countFind = LViewDepartments.Items.Count;
+
             tbkItemCounter.Text = department.Count.ToString() + " из " + App.Context.Department.Count().ToString();
             if (department.Count % maxItemShow == 0)
             {

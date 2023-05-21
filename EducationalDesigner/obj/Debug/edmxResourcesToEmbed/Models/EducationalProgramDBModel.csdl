@@ -10,7 +10,7 @@
     <Property Name="Patronymic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Department" Type="Int32" Nullable="false" />
-    <Property Name="Photo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Department1" Relationship="Self.FK_Authors_Department" FromRole="Authors" ToRole="Department" />
     <NavigationProperty Name="EducationalProgram" Relationship="Self.FK_EducationalProgram_Authors" FromRole="Authors" ToRole="EducationalProgram" />
   </EntityType>
@@ -39,7 +39,7 @@
     <Key>
       <PropertyRef Name="EducationalProgramId" />
     </Key>
-    <Property Name="EducationalProgramId" Type="Int32" Nullable="false" />
+    <Property Name="EducationalProgramId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StudyFiled" Type="Int32" Nullable="false" />
     <Property Name="Qualification" Type="Int32" Nullable="false" />
     <Property Name="ProgramName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />

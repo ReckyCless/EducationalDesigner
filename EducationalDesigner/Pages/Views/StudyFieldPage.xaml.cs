@@ -120,7 +120,7 @@ namespace EducationalDesigner.Pages.Views
                     break;
             }
             studyfield = studyfield.Where(p => p.StudyFieldName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
-            int countFind = LViewStudyFields.Items.Count;
+
             tbkItemCounter.Text = studyfield.Count.ToString() + " из " + App.Context.StudyField.Count().ToString();
             if (studyfield.Count % maxItemShow == 0)
             {

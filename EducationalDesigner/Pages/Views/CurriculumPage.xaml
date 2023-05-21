@@ -1,0 +1,91 @@
+﻿<Page x:Class="EducationalDesigner.Pages.Views.CurriculumPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EducationalDesigner.Pages.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Учебные планы" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged" Width="auto">
+                <ComboBoxItem Content="Без сортировки"></ComboBoxItem>
+                <ComboBoxItem Content="По возрастанию (Название)"></ComboBoxItem>
+                <ComboBoxItem Content="По убыванию (Название)"></ComboBoxItem>
+                <ComboBoxItem Content="По возрастанию (Дата)"></ComboBoxItem>
+                <ComboBoxItem Content="По убыванию (Дата)"></ComboBoxItem>
+                <ComboBoxItem Content="По возрастанию (Балл)"></ComboBoxItem>
+                <ComboBoxItem Content="По убыванию (Балл)"></ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="cboxOrdByEducationalProgram" SelectionChanged="CBoxOrdByEducationalProgram_SelectionChanged" DisplayMemberPath="ProgramName" SelectedIndex="0" Width="auto"/>
+            <TextBox x:Name="tbSearch" TextChanged="TbSearch_TextChanged"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock Style="{StaticResource BlockCommon}" TextAlignment="Center" Name="tbkItemCounter" Width="auto"/>
+        </StackPanel>
+        <ListView Grid.Row="2" Name="LViewCurriculum" HorizontalAlignment="Stretch" >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="{StaticResource ColorAccent}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Образовательная программа:"/>
+                                    <TextBlock Style="{StaticResource BlockAuthor}" 
+                                               Text="{Binding EducationalProgram.ProgramName}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Часов в год:"/>
+                                    <TextBlock Style="{StaticResource BlockAuthor}"
+                                           Text="{Binding HoursInYear}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Часов в неделю:"/>
+                                    <TextBlock Style="{StaticResource BlockAuthor}"
+                                           Text="{Binding HoursInWeek}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Дата начала:"/>
+                                    <TextBlock Style="{StaticResource BlockAuthor}"
+                                           Text="{Binding StartDate, StringFormat=dd-MM-yyyy}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Минимальный балл:"/>
+                                    <TextBlock Style="{StaticResource BlockAuthor}"
+                                            Text="{Binding MinScore}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="3" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Height="35" Width="50" Content="←" FontSize="22" Name="btnPagePrev" Click="BtnPagePrev_Click"/>
+            <ComboBox Width="auto" Name="cboxCurrentPageSelection" SelectionChanged="CBoxCurrentPageSelection_SelectionChanged" SelectedIndex="0"/>
+            <Button Height="35" Width="50" Content="→" FontSize="22" Name="btnPageNext" Click="BtnPageNext_Click"/>
+        </StackPanel>
+        <Button HorizontalAlignment="Right" Grid.Row="3"
+                Content="Добавить" Visibility="Collapsed" Name="btnAdd" Click="BtnAdd_Click"/>
+        <Button HorizontalAlignment="Left" Grid.Row="3"
+                Content="Удалить" Visibility="Collapsed" Name="btnDelete" Click="BtnDelete_Click"/>
+    </Grid>
+</Page>

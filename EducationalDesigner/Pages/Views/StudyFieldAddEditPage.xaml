@@ -12,15 +12,15 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Название направления*" Width="auto"></TextBlock>
-                    <TextBox Text="{Binding StudyFieldName}" PreviewTextInput="NumberValidationTextBox" MaxLength="200"></TextBox>
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Название направления*" Width="auto"/>
+                    <TextBox Text="{Binding StudyFieldName}" PreviewTextInput="NumberValidationTextBox" MaxLength="200"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Название факультета*" Width="auto"></TextBlock>
-                    <ComboBox SelectedItem="{Binding Department1}" Name="cboxDepartment"  DisplayMemberPath="DepartmentName"></ComboBox>
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Название факультета*" Width="auto"/>
+                    <ComboBox SelectedItem="{Binding Department1}" Name="cboxDepartment"  DisplayMemberPath="DepartmentName"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Height="30" Width="200" Margin="15" Name="btnSave" Click="BtnSave_Click" Content="Coxpанить"></Button>
+                    <Button Height="30" Width="200" Margin="15" Name="btnSave" Click="BtnSave_Click" Content="Coxpанить"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

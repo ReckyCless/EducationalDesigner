@@ -108,7 +108,7 @@ namespace EducationalDesigner.Pages.Views
                     break;
             }
             roles = roles.Where(p => p.RoleName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
-            int countFind = LViewRoles.Items.Count;
+
             tbkItemCounter.Text = roles.Count.ToString() + " из " + App.Context.Roles.Count().ToString();
             if (roles.Count % maxItemShow == 0)
             {

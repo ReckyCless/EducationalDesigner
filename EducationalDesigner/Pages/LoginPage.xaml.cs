@@ -42,7 +42,6 @@ namespace EducationalProgram.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            tbLogin.Text = String.Empty;
         }
 
         private void BtnToRegister_Click(object sender, RoutedEventArgs e)

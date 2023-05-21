@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EducationalDesigner.Models;
 
 namespace EducationalProgram
 {
@@ -26,11 +28,29 @@ namespace EducationalProgram
             InitializeComponent();
             frameMain.Navigate(new Pages.LoginPage());
         }
+        public void RejectChanges()
+        {
+            foreach (var entry in App.Context.ChangeTracker.Entries())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Modified:
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Modified; //Revert changes made to deleted entity.
+                        entry.State = EntityState.Unchanged;
+                        break;
+                    case EntityState.Added:
+                        entry.State = EntityState.Detached;
+                        break;
+                }
+            }
+        }
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             if (frameMain.CanGoBack && MessageBox.Show($"Вы уверены, что хотите вернуться?\nНесохраненные данные могут быть утеряны",
                 "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
-                frameMain.GoBack();
+                RejectChanges();
+            frameMain.GoBack();
         }
 
         private void FrameMain_ContentRendered(object sender, EventArgs e)

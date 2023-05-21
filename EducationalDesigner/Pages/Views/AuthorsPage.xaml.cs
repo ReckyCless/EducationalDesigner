@@ -69,17 +69,17 @@ namespace EducationalDesigner.Pages.Views
         // Add + Edit + Delete buttons controls
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            /*NavigationService.Navigate(new AuthorsAddEditPage(null));*/
+            NavigationService.Navigate(new AuthorsAddEditPage(null));
         }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var elemsToDelete = LViewAuthors.SelectedItems.Cast<Models.Authors>().ToList();
+            var elemsToDelete = LViewAuthors.SelectedItems.Cast<Authors>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следующие {elemsToDelete.Count()} элементов?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    App.Context.Roles.RemoveRange((IEnumerable<Models.Roles>)elemsToDelete);
+                    App.Context.Authors.RemoveRange((IEnumerable<Authors>)elemsToDelete);
                     App.Context.SaveChanges();
                     MessageBox.Show("Данные удалены!");
                     UpdateAuthors();
@@ -96,7 +96,7 @@ namespace EducationalDesigner.Pages.Views
         {
             if (App.CurrentUser.Role == 1 || App.CurrentUser.Role == 3)
             {
-                /*NavigationService.Navigate(new AuthorsAddEditPage((sender as ListViewItem).Content as Models.Authors));*/
+                NavigationService.Navigate(new AuthorsAddEditPage((sender as ListViewItem).Content as Models.Authors));
             }
         }
 
@@ -107,10 +107,10 @@ namespace EducationalDesigner.Pages.Views
             switch (cboxSortBy.SelectedIndex)
             {
                 case 1:
-                    authors = authors.OrderBy(p => p.Name).OrderBy(p => p.Surname).OrderBy(p => p.Patronymic).ToList();
+                    authors = authors.OrderBy(p => p.Name).ThenBy(p => p.Surname).ThenBy(p => p.Patronymic).ToList();
                     break;
                 case 2:
-                    authors = authors.OrderByDescending(p => p.Name).OrderBy(p => p.Surname).OrderBy(p => p.Patronymic).ToList();
+                    authors = authors.OrderByDescending(p => p.Name).ThenByDescending(p => p.Surname).ThenByDescending(p => p.Patronymic).ToList();
                     break;
                 default:
                     authors = authors.OrderBy(p => p.AuthorId).ToList();
@@ -120,8 +120,8 @@ namespace EducationalDesigner.Pages.Views
             { 
                 authors = authors.Where(p => p.Department1 == cboxOrdBy.SelectedValue).ToList();
             }
-            authors = authors.Where(p => (p.Name + p.Surname + p.Patronymic).ToLower().Contains(tbSearch.Text.ToLower())).ToList();
-            int countFind = LViewAuthors.Items.Count;
+            authors = authors.Where(p => (p.Name + " " + p.Surname + " " + p.Patronymic).ToLower().Contains(tbSearch.Text.ToLower())).ToList();
+
             tbkItemCounter.Text = authors.Count.ToString() + " из " + App.Context.Authors.Count().ToString();
             
             if (authors.Count % maxItemShow == 0)
