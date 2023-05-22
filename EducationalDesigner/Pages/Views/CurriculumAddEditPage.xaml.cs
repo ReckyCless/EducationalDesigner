@@ -45,7 +45,13 @@ namespace EducationalDesigner.Pages.Views
             Regex regex = new Regex(@"^[0-9]");
             e.Handled = !regex.IsMatch(e.Text);
         }
-
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             // Check if textboxes is filled

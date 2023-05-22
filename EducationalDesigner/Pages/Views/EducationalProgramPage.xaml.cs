@@ -73,14 +73,17 @@ namespace EducationalDesigner.Pages.Views
         private void CBoxOrdByStudyField_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateEducationalProgram();
+            UpdateComboBoxes();
         }
         private void CBoxOrdByQualification_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateEducationalProgram();
+            UpdateComboBoxes();
         }
         private void CBoxOrdByAuthor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateEducationalProgram();
+            UpdateComboBoxes();
         }
         private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {

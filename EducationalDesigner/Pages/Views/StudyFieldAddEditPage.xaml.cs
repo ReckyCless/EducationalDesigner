@@ -41,6 +41,13 @@ namespace EducationalDesigner.Pages.Views
             Regex regex = new Regex(@"^[a-zA-Zа-яА-Я]");
             e.Handled = !regex.IsMatch(e.Text);
         }
+        private void textBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder err = new StringBuilder();
@@ -54,7 +61,7 @@ namespace EducationalDesigner.Pages.Views
                 return;
             }
 
-            currentElem.StudyFieldName = currentElem.StudyFieldName.Trim();
+            currentElem.StudyFieldName = Regex.Replace(currentElem.StudyFieldName, @"\s+", " ");
 
             if (currentElem.StudyFieldId == 0)
             {

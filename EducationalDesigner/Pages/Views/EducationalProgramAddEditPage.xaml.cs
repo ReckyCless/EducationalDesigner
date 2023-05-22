@@ -47,7 +47,13 @@ namespace EducationalDesigner.Pages.Views
             Regex regex = new Regex(@"^[a-zA-Zа-яА-Я]");
             e.Handled = !regex.IsMatch(e.Text);
         }
-
+        private void textBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             // Check if textboxes is filled
@@ -71,7 +77,7 @@ namespace EducationalDesigner.Pages.Views
                 return;
             }
 
-            currentElem.ProgramName = currentElem.ProgramName.Trim();
+            currentElem.ProgramName = Regex.Replace(currentElem.ProgramName, @"\s+", " ");
 
             if (currentElem.EducationalProgramId == 0)
             {

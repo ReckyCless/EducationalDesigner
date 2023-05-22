@@ -43,6 +43,13 @@ namespace EducationalDesigner.Pages.Views
             Regex regex = new Regex(@"^[a-zA-Zа-яА-Я]");
             e.Handled = !regex.IsMatch(e.Text);
         }
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
         private void LoginValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"^[a-zA-Z@0-9!@#\$%\^\&*\)\(+=._-]");

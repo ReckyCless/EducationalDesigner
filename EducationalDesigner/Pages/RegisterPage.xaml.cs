@@ -86,6 +86,13 @@ namespace EducationalDesigner.Pages
                 btnRegister.IsEnabled = true;
             }
         }
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
         private void PasswordValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]");
@@ -130,13 +137,13 @@ namespace EducationalDesigner.Pages
                 return;
             }
 
-            currentElem.Login = currentElem.Login.Trim();
-            currentElem.Password = currentElem.Password.Trim();
-            currentElem.Name = currentElem.Name.Trim();
-            currentElem.Surname = currentElem.Surname.Trim();
-            currentElem.Patronymic = currentElem.Patronymic.Trim();
-            currentElem.Email = currentElem.Email.Trim();
-            
+            currentElem.Login = currentElem.Login.Replace(" ","");
+            currentElem.Password = currentElem.Password.Replace(" ", "");
+            currentElem.Name = currentElem.Name.Replace(" ", "");
+            currentElem.Surname = currentElem.Surname.Replace(" ", ""); ;
+            currentElem.Patronymic = currentElem.Patronymic.Replace(" ", "");
+            currentElem.Email = currentElem.Email.Replace(" ", "");
+
             if (App.CurrentUser == null)
             {
                 currentElem.Role = 2; // Grant User 'User' status (Role = 2)

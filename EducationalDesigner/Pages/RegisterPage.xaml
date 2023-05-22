@@ -12,29 +12,29 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Логин*" Width="auto"/>
-                <TextBox Margin="11 5 0 5" Text="{Binding Login}" PreviewTextInput="LoginValidationTextBox" MaxLength="150"/>
+                <TextBox Margin="11 5 0 5" Text="{Binding Login}" PreviewTextInput="LoginValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
                 </StackPanel>
                 <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed" HorizontalAlignment="Center" Name="LoginValidationErr" Foreground="Red"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль*" Width="auto"/>
-                <TextBox Text="{Binding Password}" PreviewTextInput="PasswordValidationTextBox" MaxLength="150"/>
+                <TextBox Text="{Binding Password}" PreviewTextInput="PasswordValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
             </StackPanel>
             <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed" HorizontalAlignment="Center" Name="PasswordValidationErr" Foreground="Red"/>
             <StackPanel Margin="27 5 0 5" Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Имя*" Width="auto"/>
-                    <TextBox Text="{Binding Name}" PreviewTextInput="TextValidationTextBox" MaxLength="150"/>
+                <TextBox Text="{Binding Name}" PreviewTextInput="TextValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
                 </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Margin="0 5 0 5" Style="{StaticResource BlockCommon}" Text="Фамилия*" Width="auto"/>
-                <TextBox Text="{Binding Surname}" PreviewTextInput="TextValidationTextBox" MaxLength="150"/>
+                <TextBox Text="{Binding Surname}" PreviewTextInput="TextValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
                 </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Margin="7 5 0 5" Style="{StaticResource BlockCommon}" Text="Отчество" Width="auto"/>
-                    <TextBox Text="{Binding Patronymic}" PreviewTextInput="TextValidationTextBox" MaxLength="150"/>
+                <TextBox Text="{Binding Patronymic}" PreviewTextInput="TextValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
                 </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Почта*" Width="auto"/>
-                <TextBox Margin="11 5 0 5" Text="{Binding Email}" Name="tbEmail" TextChanged="EmailValidationTextBox" MaxLength="150"/>
+                <TextBox Margin="11 5 0 5" Text="{Binding Email}" Name="tbEmail" TextChanged="EmailValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
                 </StackPanel>
             <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed"  HorizontalAlignment="Center" Name="EmailValidationErr" Foreground="Red"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

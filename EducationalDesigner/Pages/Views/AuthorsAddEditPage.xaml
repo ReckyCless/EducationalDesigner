@@ -15,15 +15,15 @@
                 <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed" Text="Только латиница, числа и спец. символы (!, _, $...), как минимум 4 символа" HorizontalAlignment="Right" Name="PasswordValidationErr" Foreground="Red"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Имя*" Width="auto"/>
-                    <TextBox Text="{Binding Name}" PreviewTextInput="TextValidationTextBox" MaxLength="150"/>
+                    <TextBox Text="{Binding Name}" PreviewTextInput="TextValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Фамилия*" Width="auto"/>
-                    <TextBox Text="{Binding Surname}" PreviewTextInput="TextValidationTextBox" MaxLength="150"/>
+                    <TextBox Text="{Binding Surname}" PreviewTextInput="TextValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Отчество" Width="auto"/>
-                    <TextBox Text="{Binding Patronymic}" PreviewTextInput="TextValidationTextBox" MaxLength="150"/>
+                    <TextBox Text="{Binding Patronymic}" PreviewTextInput="TextValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Дата рождения*" Width="auto"/>

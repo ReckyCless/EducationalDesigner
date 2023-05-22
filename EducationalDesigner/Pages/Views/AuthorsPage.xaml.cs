@@ -59,6 +59,7 @@ namespace EducationalDesigner.Pages.Views
         private void CBoxOrdBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateAuthors();
+            UpdateComboBoxes();
         }
         private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {

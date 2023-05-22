@@ -17,11 +17,11 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Часов в год*" Width="auto"/>
-                    <TextBox Text="{Binding HourInYear}" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox Text="{Binding HourInYear}" PreviewTextInput="NumberValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Часов в неделю*" Width="auto"/>
-                    <TextBox Text="{Binding HoursInWeek}" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox Text="{Binding HoursInWeek}" PreviewTextInput="NumberValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Дата начала*" Width="auto"/>
@@ -29,7 +29,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Минимальный балл*" Width="auto"/>
-                    <TextBox Text="{Binding MinScore}" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox Text="{Binding MinScore}" PreviewTextInput="NumberValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Height="30" Width="200" Margin="15" Name="btnSave" Click="BtnSave_Click" Content="Coxpанить"/>

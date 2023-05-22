@@ -60,6 +60,7 @@ namespace EducationalDesigner.Pages.Views
         private void CBoxOrdByEducationalProgram_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateCurriculum();
+            UpdateComboBoxes();
         }
         private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {

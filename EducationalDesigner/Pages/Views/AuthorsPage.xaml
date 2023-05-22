@@ -33,20 +33,13 @@
                     <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
                 </Style>
             </ListView.ItemContainerStyle>
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal">
-
-                    </WrapPanel>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
+                                
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="70"/>
+                                
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
