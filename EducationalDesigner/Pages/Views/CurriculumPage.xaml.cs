@@ -51,6 +51,7 @@ namespace EducationalDesigner.Pages.Views
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateCurriculum();
+            UpdateComboBoxes();
         }
         private void CBoxSortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

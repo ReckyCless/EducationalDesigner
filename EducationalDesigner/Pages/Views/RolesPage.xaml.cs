@@ -43,7 +43,8 @@ namespace EducationalDesigner.Pages.Views
         // Updating GridView on Events
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateRoles();    
+            UpdateRoles();
+            UpdateComboBoxes();
         }
         private void CBoxSortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
