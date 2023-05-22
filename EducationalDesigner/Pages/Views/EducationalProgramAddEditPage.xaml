@@ -17,7 +17,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Квалификация*" Width="auto"/>
-                    <ComboBox SelectedItem="{Binding Qualification}" Name="cboxQualification" DisplayMemberPath="QualificationName"/>
+                    <ComboBox SelectedItem="{Binding Qualification1}" Name="cboxQualification" DisplayMemberPath="QualificationName"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Название*" Width="auto"/>
@@ -25,8 +25,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Дата создания*" Width="auto"/>
-                    <DatePicker Name="dpickCreationDate" Width="180" Margin="0" SelectedDate="{Binding CreationDate}"
-                                DisplayDateEnd="{Binding Mode=OneWay, Source=DateTime.Today}"/>
+                    <DatePicker Name="dpickCreationDate" Width="180" Margin="0" SelectedDate="{Binding CreationDate}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Автор" Width="auto"/>
@@ -35,9 +34,9 @@
                             <DataTemplate>
                                 <TextBlock>
                                     <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} - {1}">
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
                                             <Binding Path="Name"/>
-                                            <Binding Path="Suraname"/>
+                                            <Binding Path="Surname"/>
                                             <Binding Path="Patronymic"/>
                                         </MultiBinding>
                                     </TextBlock.Text>

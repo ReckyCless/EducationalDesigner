@@ -13,7 +13,7 @@
             <StackPanel VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Образовательная программа*" Width="auto"/>
-                    <ComboBox SelectedItem="{Binding EducationalProgram}" Name="cboxEducationalProgram" DisplayMemberPath="ProgramName"/>
+                    <ComboBox SelectedItem="{Binding EducationalProgram1}" Name="cboxEducationalProgram" DisplayMemberPath="ProgramName"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Часов в год*" Width="auto"/>
@@ -25,8 +25,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Дата начала*" Width="auto"/>
-                    <DatePicker Name="dpickStartDate" Width="180" Margin="0" SelectedDate="{Binding StartDate}"
-                                DisplayDateEnd="{Binding Mode=OneWay, Source=DateTime.Today}"/>
+                    <DatePicker Name="dpickStartDate" Width="180" Margin="0" SelectedDate="{Binding StartDate}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Минимальный балл*" Width="auto"/>

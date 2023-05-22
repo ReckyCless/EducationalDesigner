@@ -27,6 +27,10 @@ namespace EducationalDesigner.Pages.Views
         public CurriculumAddEditPage(Curriculum elemData)
         {
             InitializeComponent();
+
+            dpickStartDate.DisplayDateStart = new DateTime(1900, 1, 1);
+            dpickStartDate.DisplayDateEnd = DateTime.Now.AddYears(2);
+
             if (elemData != null)
             {
                 Title = "УП. Редактирование";
@@ -48,17 +52,19 @@ namespace EducationalDesigner.Pages.Views
             StringBuilder err = new StringBuilder();
             if (cboxEducationalProgram.SelectedItem == null)
                 err.AppendLine("Укажите образовательную программу");
-            if (currentElem.HourInYear == 0)
+            if (currentElem.HourInYear == 0 || currentElem.HoursInWeek.ToString().Contains(" ")) 
             {
                 err.AppendLine("Укажите кол-во часов в году");
             }
             else if (currentElem.HourInYear < currentElem.HoursInWeek)
                 err.AppendLine("Число часов в году не может быть меньше, часов в неделю");
-            if (currentElem.HoursInWeek == 0)
+            if (currentElem.HoursInWeek == 0 || currentElem.HoursInWeek.ToString().Contains(" "))
                 err.AppendLine("Укажите кол-во часов в неделю");
             if (dpickStartDate == null)
-                err.AppendLine("Укажите дату создания");
-            if (currentElem.MinScore == 0)
+                err.AppendLine("Укажите дату начала");
+            if (dpickStartDate.SelectedDate > DateTime.Now.AddYears(2))
+                err.AppendLine("Дата начала может быть более сегодняшней максимум на 2 года");
+            if (currentElem.MinScore == 0 || currentElem.HoursInWeek.ToString().Contains(" "))
                 err.AppendLine("Укажите минимальный балл");
 
             if (err.Length > 0)

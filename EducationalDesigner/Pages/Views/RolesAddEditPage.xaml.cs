@@ -49,6 +49,9 @@ namespace EducationalDesigner.Pages.Views
                 MessageBox.Show(err.ToString());
                 return;
             }
+
+            currentElem.RoleName = currentElem.RoleName.Trim();
+
             if (currentElem.RoleId == 0)
             {
                 App.Context.Roles.Add(currentElem);

@@ -78,7 +78,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Style="{StaticResource BlockCommon}" Text="Дата рождения:"/>
                                     <TextBlock Style="{StaticResource BlockAuthor}"
-                                           Text="{Binding DateOfBirth, StringFormat=dd-MM-yyyy}"/>
+                                           Text="{Binding DateOfBirth, StringFormat=dd.MM.yyyy}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Style="{StaticResource BlockCommon}" Text="Факультет:"/>

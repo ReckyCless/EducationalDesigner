@@ -56,36 +56,35 @@
                     <Border BorderBrush="{StaticResource ColorAccent}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Направление:"/>
-                                    <TextBlock Style="{StaticResource BlockAuthor}" 
+                                    <TextBlock Style="{StaticResource BlockStrechMain}" 
+                                            Text="{Binding ProgramName}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource BlockCommonSub}" Text="Направление:"/>
+                                    <TextBlock Style="{StaticResource BlockStrechSub}"
                                                Text="{Binding StudyField.StudyFieldName}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Квалификация:"/>
-                                    <TextBlock Style="{StaticResource BlockAuthor}"
+                                    <TextBlock Style="{StaticResource BlockCommonLeft}" Text="Квалификация:"/>
+                                    <TextBlock Style="{StaticResource BlockStrech}" 
                                            Text="{Binding Qualification1.QualificationName}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Название программы:"/>
-                                    <TextBlock Style="{StaticResource BlockAuthor}"
-                                           Text="{Binding ProgramName}"/>
+                                    <TextBlock Style="{StaticResource BlockCommonLeft}" Text="Дата создания:"/>
+                                    <TextBlock Style="{StaticResource BlockStrech}"
+                                           Text="{Binding CreationDate, StringFormat=dd.MM.yyyy}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Дата создания:"/>
-                                    <TextBlock Style="{StaticResource BlockAuthor}"
-                                           Text="{Binding CreationDate, StringFormat=dd-MM-yyyy}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Автор:"/>
-                                    <TextBlock Style="{StaticResource BlockAuthor}">
+                                    <TextBlock Style="{StaticResource BlockCommonLeft}" Text="Автор:"/>
+                                    <TextBlock Style="{StaticResource BlockStrech}">
                                         <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{0} + {1} + {2}">
+                                            <MultiBinding StringFormat="{}{0} {1} {2}">
                                                 <Binding Path="Authors.Name"/>
                                                 <Binding Path="Authors.Surname"/>
                                                 <Binding Path="Authors.Patronymic" />

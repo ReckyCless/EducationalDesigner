@@ -42,34 +42,33 @@
                     <Border BorderBrush="{StaticResource ColorAccent}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Образовательная программа:"/>
-                                    <TextBlock Style="{StaticResource BlockAuthor}" 
-                                               Text="{Binding EducationalProgram.ProgramName}"/>
+                                    <TextBlock Style="{StaticResource BlockStrechMain}" 
+                                               Text="{Binding EducationalProgram1.ProgramName}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Часов в год:"/>
-                                    <TextBlock Style="{StaticResource BlockAuthor}"
-                                           Text="{Binding HoursInYear}"/>
+                                    <TextBlock Style="{StaticResource BlockCommonSub}" Text="Часов в год:"/>
+                                    <TextBlock Style="{StaticResource BlockStrechSub}" 
+                                           Text="{Binding HourInYear}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Часов в неделю:"/>
-                                    <TextBlock Style="{StaticResource BlockAuthor}"
+                                    <TextBlock Style="{StaticResource BlockCommonSub}" Text="Часов в неделю:"/>
+                                    <TextBlock Style="{StaticResource BlockStrechSub}"
                                            Text="{Binding HoursInWeek}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Дата начала:"/>
-                                    <TextBlock Style="{StaticResource BlockAuthor}"
-                                           Text="{Binding StartDate, StringFormat=dd-MM-yyyy}"/>
+                                    <TextBlock Style="{StaticResource BlockCommonLeft}" Text="Дата начала:"/>
+                                    <TextBlock Style="{StaticResource BlockStrech}"
+                                           Text="{Binding StartDate, StringFormat=dd.MM.yyyy}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BlockCommon}" Text="Минимальный балл:"/>
-                                    <TextBlock Style="{StaticResource BlockAuthor}"
+                                    <TextBlock Style="{StaticResource BlockStrechMain}" Text="Минимальный балл:"/>
+                                    <TextBlock Style="{StaticResource BlockStrechMain}" Foreground="{StaticResource ColorAccent}"
                                             Text="{Binding MinScore}"/>
                                 </StackPanel>
                             </StackPanel>

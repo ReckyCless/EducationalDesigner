@@ -20,7 +20,7 @@
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль*" Width="auto"/>
                     <TextBox Text="{Binding Password}" PreviewTextInput="PasswordValidationTextBox" MaxLength="150"/>
                 </StackPanel>
-                <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed" Text="Только латиница, числа и спец. символы (!, _, $...), как минимум 4 символа" HorizontalAlignment="Right" Name="PasswordValidationErr" Foreground="Red"/>
+                <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed" HorizontalAlignment="Right" Name="PasswordValidationErr" Foreground="Red"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Имя*" Width="auto"/>
                     <TextBox Text="{Binding Name}" PreviewTextInput="TextValidationTextBox" MaxLength="150"/>

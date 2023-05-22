@@ -49,16 +49,21 @@ namespace EducationalDesigner.Pages.Views
                 MessageBox.Show(err.ToString());
                 return;
             }
+
+            currentElem.DepartmentName = currentElem.DepartmentName.Trim();
+
             if (currentElem.DepartmentId == 0)
             {
                 App.Context.Department.Add(currentElem);
             }
+
             try
             {
                 App.Context.SaveChanges();
                 MessageBox.Show("Данные сохранены");
                 NavigationService.GoBack();
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());

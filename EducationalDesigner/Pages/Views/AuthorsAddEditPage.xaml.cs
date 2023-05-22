@@ -33,7 +33,6 @@ namespace EducationalDesigner.Pages.Views
 
             dpickBirthDate.DisplayDateStart = new DateTime(1900, 1, 1);
             dpickBirthDate.DisplayDateEnd = DateTime.Now;
-            dpickBirthDate.SelectedDate = DateTime.Now;
 
             if (elemData != null)
             {
@@ -41,6 +40,7 @@ namespace EducationalDesigner.Pages.Views
                 currentElem = elemData;
             }
             DataContext = currentElem;
+
             cboxDepartment.ItemsSource = App.Context.Department.ToList();
            
             if (currentElem.Photo != null)
@@ -110,6 +110,10 @@ namespace EducationalDesigner.Pages.Views
                 MessageBox.Show(err.ToString());
                 return;
             }
+
+            currentElem.Name = currentElem.Name.Trim();
+            currentElem.Surname = currentElem.Surname.Trim();
+            currentElem.Patronymic = currentElem.Patronymic.Trim();
 
             if (currentElem.AuthorId == 0)
             {

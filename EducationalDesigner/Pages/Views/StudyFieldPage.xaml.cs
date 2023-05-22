@@ -65,7 +65,6 @@ namespace EducationalDesigner.Pages.Views
         {
             UpdateStudyFields();
             UpdateComboBoxes();
-            cboxCurrentPageSelection.SelectedIndex = 0;
         }
 
         // Add + Delete buttons controls
@@ -184,6 +183,7 @@ namespace EducationalDesigner.Pages.Views
             {
                 cboxCurrentPageSelection.Items.Add(i.ToString());
             }
+            cboxCurrentPageSelection.SelectedIndex = 0;
         }
     }
 }

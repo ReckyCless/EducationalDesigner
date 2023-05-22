@@ -109,3 +109,6 @@ F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\Auth
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\CurriculumAddEditPage.g.cs
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\AuthorsAddEditPage.baml
 F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\Views\CurriculumAddEditPage.baml
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\CabinetPage.g.cs
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\Pages\CabinetPage.baml
+F:\Обучение\CourseProject\EducationalDesigner\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

@@ -1,9 +1,9 @@
-﻿<Page x:Class="EducationalProgram.Pages.LoginPage"
+﻿<Page x:Class="EducationalDesigner.Pages.LoginPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:EducationalProgram.Pages"
+      xmlns:local="clr-namespace:EducationalDesigner.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Авторизация" Loaded="Page_Loaded">
@@ -12,11 +12,11 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Логин:"></TextBlock>
-                <TextBox Name="tbLogin"></TextBox>
+                <TextBox Name="tbLogin"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль:"></TextBlock>
-                <PasswordBox Name="tbPassword"></PasswordBox>
+                <PasswordBox Name="tbPassword"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button Name="btnGuest" Click="BtnToRegister_Click" Content="Зарегистрироваться..."/>

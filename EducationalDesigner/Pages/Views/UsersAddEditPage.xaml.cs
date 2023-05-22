@@ -121,6 +121,13 @@ namespace EducationalDesigner.Pages.Views
                 return;
             }
 
+            currentElem.Login = currentElem.Login.Trim();
+            currentElem.Password = currentElem.Password.Trim();
+            currentElem.Name = currentElem.Name.Trim();
+            currentElem.Surname = currentElem.Surname.Trim();
+            currentElem.Patronymic = currentElem.Patronymic.Trim();
+            currentElem.Email = currentElem.Email.Trim();
+
             if (currentElem.UserId == 0)
             {
                 App.Context.Users.Add(currentElem);

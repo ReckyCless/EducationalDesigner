@@ -53,6 +53,9 @@ namespace EducationalDesigner.Pages.Views
                 MessageBox.Show(err.ToString());
                 return;
             }
+
+            currentElem.StudyFieldName = currentElem.StudyFieldName.Trim();
+
             if (currentElem.StudyFieldId == 0)
             {
                 App.Context.StudyField.Add(currentElem);

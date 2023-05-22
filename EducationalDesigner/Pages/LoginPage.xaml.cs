@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EducationalProgram.Pages
+namespace EducationalDesigner.Pages
 {
     /// <summary>
     /// Логика взаимодействия для LoginPage.xaml
@@ -23,6 +23,8 @@ namespace EducationalProgram.Pages
         public LoginPage()
         {
             InitializeComponent();
+
+            App.CurrentUser = null;
         }
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -32,21 +34,46 @@ namespace EducationalProgram.Pages
             if (currentUser != null)
             {
                 App.CurrentUser = currentUser;
-                NavigationService.Navigate(new EducationalDesigner.Pages.Views.AuthorsPage());
+                var currentWindow = Application.Current.Windows
+                    .Cast<Window>()
+                    .FirstOrDefault(window => window is MainWindow) as MainWindow;
+                // Controls Visibility
+                if (currentUser.Role == 1 || currentUser.Role == 3)
+                {
+                    currentWindow.AdminPanel.Visibility = Visibility.Visible;
+                    currentWindow.AdminUsPanel.Visibility = Visibility.Visible;
+                    currentWindow.AdminSPanel.Visibility = Visibility.Visible;
+                    currentWindow.CabinetMenu.Visibility = Visibility.Visible;
+                }
+                else if (currentUser.Role == 2)
+                {
+                    currentWindow.AdminPanel.Visibility = Visibility.Visible;
+                    currentWindow.CabinetMenu.Visibility = Visibility.Visible;
+                }
+                NavigationService.Navigate(new Views.EducationalProgramPage());
             }
             else
             {
-                MessageBox.Show("Пользователь не найден.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Пользователь не найден.", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            tbLogin.Text = String.Empty;
+            var currentWindow = Application.Current.Windows
+                .Cast<Window>()
+                .FirstOrDefault(window => window is MainWindow) as MainWindow;
+            currentWindow.AdminPanel.Visibility = Visibility.Collapsed;
+            currentWindow.AdminSPanel.Visibility = Visibility.Collapsed;
+            currentWindow.AdminUsPanel.Visibility = Visibility.Collapsed;
+            currentWindow.CabinetMenu.Visibility = Visibility.Collapsed;
         }
 
         private void BtnToRegister_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RegisterPage());
+            NavigationService.Navigate(new RegisterPage(null));
         }
     }
 }

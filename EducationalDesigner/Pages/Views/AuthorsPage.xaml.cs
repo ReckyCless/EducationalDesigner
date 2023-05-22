@@ -24,7 +24,7 @@ namespace EducationalDesigner.Pages.Views
     {
         private int PagesCount;
         private int NumberOfPage = 0;
-        private int maxItemShow = 4;
+        private int maxItemShow = 3;
         List<Authors> authors = new List<Authors>();
         public AuthorsPage()
         {
@@ -63,7 +63,6 @@ namespace EducationalDesigner.Pages.Views
         {
             UpdateAuthors();
             UpdateComboBoxes();
-            cboxCurrentPageSelection.SelectedIndex = 0;
         }
 
         // Add + Edit + Delete buttons controls
@@ -183,6 +182,7 @@ namespace EducationalDesigner.Pages.Views
             {
                 cboxCurrentPageSelection.Items.Add(i.ToString());
             }
+            cboxCurrentPageSelection.SelectedIndex = 0;
         }
     }
 }

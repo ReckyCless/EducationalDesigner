@@ -27,17 +27,17 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Дата рождения*" Width="auto"/>
-                    <DatePicker Name="dpickBirthDate" Width="179" Margin="0" SelectedDate="{Binding DateOfBirth}"/>
+                    <DatePicker Name="dpickBirthDate" Width="180" Margin="0" SelectedDate="{Binding DateOfBirth}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Факультет*" Width="auto"/>
-                    <ComboBox SelectedItem="{Binding Department1}" Name="cboxDepartment" DisplayMemberPath="DepartmentName"/>
+                    <ComboBox SelectedItem="{Binding Department1}" Name="cboxDepartment" DisplayMemberPath="DepartmentName" Width="auto"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel VerticalAlignment="Center">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Border Margin="5" Height="175" Width="200" BorderBrush="{StaticResource ColorAccent}" BorderThickness="1">
+                        <Border Margin="5" Height="350" Width="400" BorderBrush="{StaticResource ColorAccent}" BorderThickness="1">
                             <Image Name="ImageService"/>
                         </Border>
                         <Button Height="30" Width="200" Margin="5" Name="btnSelectImage" Click="BtnSelectImage_Click" Content="Выбрать фотографию"/>

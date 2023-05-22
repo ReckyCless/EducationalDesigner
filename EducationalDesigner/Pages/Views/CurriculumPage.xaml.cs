@@ -25,7 +25,7 @@ namespace EducationalDesigner.Pages.Views
     {
         private int PagesCount;
         private int NumberOfPage = 0;
-        private int maxItemShow = 4;
+        private int maxItemShow = 3;
         List<Curriculum> curriculum = new List<Curriculum>();
         public CurriculumPage()
         {
@@ -64,7 +64,6 @@ namespace EducationalDesigner.Pages.Views
         {
             UpdateCurriculum();
             UpdateComboBoxes();
-            cboxCurrentPageSelection.SelectedIndex = 0;
         }
 
         // Add + Edit + Delete buttons controls
@@ -196,6 +195,7 @@ namespace EducationalDesigner.Pages.Views
             {
                 cboxCurrentPageSelection.Items.Add(i.ToString());
             }
+            cboxCurrentPageSelection.SelectedIndex = 0;
         }
     }
 }

@@ -14,8 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using EducationalDesigner.Models;
+using EducationalDesigner.Pages.Views;
+using EducationalDesigner.Pages;
 
-namespace EducationalProgram
+namespace EducationalDesigner
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -26,7 +28,7 @@ namespace EducationalProgram
         public MainWindow()
         {
             InitializeComponent();
-            frameMain.Navigate(new Pages.LoginPage());
+            frameMain.Navigate(new LoginPage());
         }
         public void RejectChanges()
         {
@@ -47,29 +49,59 @@ namespace EducationalProgram
         }
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (frameMain.CanGoBack && MessageBox.Show($"Вы уверены, что хотите вернуться?\nНесохраненные данные могут быть утеряны",
+            if (MessageBox.Show($"Вы уверены, что хотите вернуться?\nНесохраненные данные могут быть утеряны",
                 "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+            {
                 RejectChanges();
-            frameMain.GoBack();
-        }
-
-        private void FrameMain_ContentRendered(object sender, EventArgs e)
-        {
-            if (frameMain.Content != frameContent)
-            {
-                if (App.CurrentUser != null)
-                    tbkUsername.Text = App.CurrentUser.Surname + "\n" + App.CurrentUser.Name + "\n" + App.CurrentUser.Patronymic;
-                else tbkUsername.Text = "Гость";
-            }
-            else
-            {
-                tbkUsername.Text = String.Empty;
+                frameMain.GoBack();
             }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             frameContent = frameMain.Content;
+        }
+
+        // Menu Control
+        private void AuthorsTable_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(new AuthorsPage());
+        }
+        private void EducationalProgramTable_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(new EducationalProgramPage());
+        }
+        private void CurriculumTable_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(new CurriculumPage());
+        }
+        private void UsersTable_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(new UsersPage());
+        }
+        private void RolesTable_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(new RolesPage());
+        }
+        private void DepartmentTable_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(new DepartmentPage());
+        }
+        private void StudyFieldsTable_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(new StudyFieldPage());
+        }
+        private void QualificationTable_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(new QualificationPage());
+        }
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(new LoginPage());
+        }
+        private void CabinetGo_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(new CabinetPage());
         }
     }
 }

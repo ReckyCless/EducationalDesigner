@@ -27,6 +27,10 @@ namespace EducationalDesigner.Pages.Views
         public EducationalProgramAddEditPage(Models.EducationalProgram elemData)
         {
             InitializeComponent();
+
+            dpickCreationDate.DisplayDateStart = new DateTime(1900, 1, 1);
+            dpickCreationDate.DisplayDateEnd = DateTime.Now;
+
             if (elemData != null)
             {
                 Title = "ОП. Редактирование";
@@ -56,6 +60,8 @@ namespace EducationalDesigner.Pages.Views
                 err.AppendLine("Укажите название программы");
             if (dpickCreationDate == null)
                 err.AppendLine("Укажите дату создания");
+            if (dpickCreationDate.SelectedDate > DateTime.Now)
+                err.AppendLine("Дата создания не может быть больше сегодняшней");
             if (cboxAuthors.SelectedItem == null)
                 err.AppendLine("Укажите автора");
 
@@ -64,6 +70,8 @@ namespace EducationalDesigner.Pages.Views
                 MessageBox.Show(err.ToString());
                 return;
             }
+
+            currentElem.ProgramName = currentElem.ProgramName.Trim();
 
             if (currentElem.EducationalProgramId == 0)
             {
