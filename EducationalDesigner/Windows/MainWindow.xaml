@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EducationalDesigner"
         mc:Ignorable="d"
-        Title="Конструктор ОП" Height="550" Width="1200" MinHeight="550" MinWidth="1200" Icon="/Resources/icon.ico" Loaded="Window_Loaded">
+        Title="Конструктор ОП" Height="650" Width="1200" MinHeight="650" MinWidth="800" Icon="/Resources/icon.ico" Loaded="Window_Loaded">
 
 
     <Grid>
@@ -128,7 +128,7 @@
             </MenuItem>
         </Menu>
         <TextBlock Style="{StaticResource BlockHeader}" Text="{Binding ElementName=frameMain, Path=Content.Title}"/>
-        <Frame Name="frameMain" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+        <Frame Name="frameMain" NavigationUIVisibility="Hidden" Grid.Row="1" ContentRendered="FrameMain_ContentRendered"/>
         <Button Content="Назад" HorizontalAlignment="Center" Name="btnBack" Click="BtnBack_Click" Grid.Row="2"></Button>
     </Grid>
 </Window>

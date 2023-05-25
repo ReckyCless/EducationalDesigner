@@ -62,6 +62,19 @@ namespace EducationalDesigner
             frameContent = frameMain.Content;
         }
 
+        private void FrameMain_ContentRendered(object sender, EventArgs e)
+        {
+            if (frameMain.CanGoBack && App.CurrentUser != null)
+            {
+                btnBack.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnBack.Visibility = Visibility.Hidden;
+            }
+
+        }
+
         // Menu Control
         private void AuthorsTable_Click(object sender, RoutedEventArgs e)
         {
@@ -97,6 +110,7 @@ namespace EducationalDesigner
         }
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
+            btnBack.Visibility = Visibility.Hidden;
             frameMain.Navigate(new LoginPage());
         }
         private void CabinetGo_Click(object sender, RoutedEventArgs e)

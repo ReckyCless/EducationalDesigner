@@ -23,8 +23,6 @@ namespace EducationalDesigner.Pages
         public LoginPage()
         {
             InitializeComponent();
-
-            App.CurrentUser = null;
         }
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -61,6 +59,7 @@ namespace EducationalDesigner.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            App.CurrentUser = null;
             tbLogin.Text = String.Empty;
             var currentWindow = Application.Current.Windows
                 .Cast<Window>()

@@ -16,7 +16,7 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged" Width="auto">
+            <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged" Width="150">
                 <ComboBoxItem Content="Без сортировки"></ComboBoxItem>
                 <ComboBoxItem Content="По возрастанию"></ComboBoxItem>
                 <ComboBoxItem Content="По убыванию"></ComboBoxItem>
@@ -31,7 +31,7 @@
                 <Style TargetType="{x:Type ListViewItem}">
                     <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
                     <Setter Property="Height" Value="50"/>
-                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="FontSize" Value="14"/>
                     <Setter Property="FontWeight" Value="Bold"/>
                 </Style>
             </ListView.ItemContainerStyle>

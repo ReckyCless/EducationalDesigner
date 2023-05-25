@@ -16,12 +16,12 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged" Width="auto">
+            <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged" Width="150">
                 <ComboBoxItem Content="Без сортировки"/>
                 <ComboBoxItem Content="По возрастанию (ФИО)"/>
                 <ComboBoxItem Content="По убыванию (ФИО)"/>
             </ComboBox>
-            <ComboBox Name="cboxOrdBy" SelectionChanged="CBoxOrdBy_SelectionChanged" DisplayMemberPath="DepartmentName" SelectedIndex="0" Width="auto"/>
+            <ComboBox Name="cboxOrdBy" SelectionChanged="CBoxOrdBy_SelectionChanged" DisplayMemberPath="DepartmentName" SelectedIndex="0" Width="150"/>
             <TextBox x:Name="tbSearch" TextChanged="TbSearch_TextChanged"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
@@ -31,8 +31,15 @@
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
                 </Style>
             </ListView.ItemContainerStyle>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
                         <Grid>

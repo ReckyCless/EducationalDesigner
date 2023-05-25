@@ -16,16 +16,16 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged" Width="auto">
+            <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged" Width="150">
                 <ComboBoxItem Content="Без сортировки"></ComboBoxItem>
                 <ComboBoxItem Content="По возрастанию (Название)"></ComboBoxItem>
                 <ComboBoxItem Content="По убыванию (Название)"></ComboBoxItem>
                 <ComboBoxItem Content="По возрастанию (Дата)"></ComboBoxItem>
                 <ComboBoxItem Content="По убыванию (Дата)"></ComboBoxItem>
             </ComboBox>
-            <ComboBox Name="cboxOrdByStudyField" SelectionChanged="CBoxOrdByStudyField_SelectionChanged" DisplayMemberPath="StudyFieldName" SelectedIndex="0" Width="auto"/>
-            <ComboBox Name="cboxOrdByQualification" SelectionChanged="CBoxOrdByQualification_SelectionChanged" DisplayMemberPath="QualificationName" SelectedIndex="0" Width="auto"/>
-            <ComboBox Name="cboxOrdByAuthor" SelectionChanged="CBoxOrdByAuthor_SelectionChanged" SelectedIndex="0" Width="auto">
+            <ComboBox Name="cboxOrdByStudyField" SelectionChanged="CBoxOrdByStudyField_SelectionChanged" DisplayMemberPath="StudyFieldName" SelectedIndex="0" Width="150"/>
+            <ComboBox Name="cboxOrdByQualification" SelectionChanged="CBoxOrdByQualification_SelectionChanged" DisplayMemberPath="QualificationName" SelectedIndex="0" Width="150"/>
+            <ComboBox Name="cboxOrdByAuthor" SelectionChanged="CBoxOrdByAuthor_SelectionChanged" SelectedIndex="0" Width="150">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>

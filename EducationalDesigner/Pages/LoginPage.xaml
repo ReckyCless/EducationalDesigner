@@ -10,17 +10,17 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Style="{StaticResource BlockCommon}" Text="Логин:"></TextBlock>
-                <TextBox Name="tbLogin"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль:"></TextBlock>
-                <PasswordBox Name="tbPassword"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button Name="btnGuest" Click="BtnToRegister_Click" Content="Зарегистрироваться..."/>
+            <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource BlockStockPile}" Text="Логин:"/>
+                    <TextBox Name="tbLogin"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource BlockStockPile}" Text="Пароль:"/>
+                    <PasswordBox Name="tbPassword"/>
+                </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
                 <Button Name="btnLogin" Click="BtnLogin_Click" Content="Войти"/>
+                <TextBlock Style="{StaticResource BlockCommon}" Width="auto"><Hyperlink NavigateUri="page2.xaml" Click="BtnToRegister_Click">Создать аккаунт?</Hyperlink></TextBlock>
             </StackPanel>
         </StackPanel>
     </Grid>

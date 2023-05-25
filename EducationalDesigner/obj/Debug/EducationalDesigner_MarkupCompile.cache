@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\10200285\source\repos\Kurs\EducationalDesigner\obj\Debug\
+F:\Обучение\CourseProject\EducationalDesigner\obj\Debug\
 EducationalDesigner
 none
 false
 DEBUG;TRACE
-C:\Users\10200285\source\repos\Kurs\EducationalDesigner\App.xaml
+F:\Обучение\CourseProject\EducationalDesigner\App.xaml
 20-1245360085
 2-1417271109
 36-2146648607
-181460294379
+18-407938571
 Pages\CabinetPage.xaml;Pages\LoginPage.xaml;Pages\RegisterPage.xaml;Pages\Views\AuthorsAddEditPage.xaml;Pages\Views\CurriculumAddEditPage.xaml;Pages\Views\CurriculumPage.xaml;Pages\Views\DepartmentAddEditPage.xaml;Pages\Views\DepartmentPage.xaml;Pages\Views\EducationalProgramAddEditPage.xaml;Pages\Views\EducationalProgramPage.xaml;Pages\Views\QualificationAddEditPage.xaml;Pages\Views\QualificationPage.xaml;Pages\Views\RolesAddEditPage.xaml;Pages\Views\AuthorsPage.xaml;Pages\Views\RolesPage.xaml;Pages\Views\StudyFieldAddEditPage.xaml;Pages\Views\StudyFieldPage.xaml;Pages\Views\UsersAddEditPage.xaml;Pages\Views\UsersPage.xaml;Windows\MainWindow.xaml;
 
 False

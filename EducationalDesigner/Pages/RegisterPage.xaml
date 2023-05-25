@@ -13,13 +13,17 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Логин*" Width="auto"/>
                 <TextBox Margin="11 5 0 5" Text="{Binding Login}" PreviewTextInput="LoginValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
-                </StackPanel>
-                <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed" HorizontalAlignment="Center" Name="LoginValidationErr" Foreground="Red"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль*" Width="auto"/>
-                <TextBox Text="{Binding Password}" PreviewTextInput="PasswordValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
+                <PasswordBox Name="tbPassword" PasswordChanged="PasswordValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
             </StackPanel>
-            <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed" HorizontalAlignment="Center" Name="PasswordValidationErr" Foreground="Red"/>
+            <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed" HorizontalAlignment="Right" Name="PasswordValidationErr" Foreground="Red"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Повтор*" Width="auto"/>
+                <PasswordBox Name="tbPasswordRepeat" PasswordChanged="PasswordRepeatValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
+            </StackPanel>
+            <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed" HorizontalAlignment="Right" Name="PasswordRepeatValidationErr" Foreground="Red"/>
             <StackPanel Margin="27 5 0 5" Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Имя*" Width="auto"/>
                 <TextBox Text="{Binding Name}" PreviewTextInput="TextValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
@@ -36,10 +40,10 @@
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Почта*" Width="auto"/>
                 <TextBox Margin="11 5 0 5" Text="{Binding Email}" Name="tbEmail" TextChanged="EmailValidationTextBox" PreviewKeyDown="TextBox_PreviewKeyDown" MaxLength="150"/>
                 </StackPanel>
-            <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed"  HorizontalAlignment="Center" Name="EmailValidationErr" Foreground="Red"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="btnToLogin" Click="BtnToLogin_Click" Content="Есть аккаунт?"/>
+            <TextBlock TextWrapping="Wrap" Width="180" Visibility="Collapsed"  HorizontalAlignment="Right" Name="EmailValidationErr" Foreground="Red"/>
+            <StackPanel HorizontalAlignment="Center">
                 <Button Name="btnRegister" Click="BtnRegister_Click" Content="Зарегистрировать"/>
+                <TextBlock Style="{StaticResource BlockCommon}" Width="auto" Name="btnToLogin"><Hyperlink Click="BtnToLogin_Click">Войти в аккаунт?</Hyperlink></TextBlock>
             </StackPanel>
         </StackPanel>
     </Grid>

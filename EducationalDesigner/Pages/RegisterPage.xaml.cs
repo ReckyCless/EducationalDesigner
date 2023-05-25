@@ -1,22 +1,12 @@
-﻿using EducationalProgram;
+﻿using EducationalDesigner.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Text.RegularExpressions;
-using EducationalDesigner.Models;
-using System.ComponentModel.DataAnnotations;
-using System.Net.Mail;
 
 namespace EducationalDesigner.Pages
 {
@@ -47,6 +37,7 @@ namespace EducationalDesigner.Pages
             }
 
             DataContext = currentElem;
+            tbPassword.Password = currentElem.Password;
         }
         // Regexes
         private void TextValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -58,16 +49,6 @@ namespace EducationalDesigner.Pages
         {
             Regex regex = new Regex(@"^[a-zA-Z@0-9!@#\$%\^\&*\)\(+=._-]");
             e.Handled = !regex.IsMatch(e.Text);
-            if (!regex.IsMatch(e.Text))
-            {
-                LoginValidationErr.Visibility = Visibility.Visible;
-                LoginValidationErr.Text = "Только латиница, числа и спец. символы (!, _, $...)";
-            }
-            else if (regex.IsMatch(e.Text))
-            {
-                LoginValidationErr.Visibility = Visibility.Collapsed;
-                LoginValidationErr.Text = "";
-            }
         }
 
         private void EmailValidationTextBox(object sender, EventArgs e)
@@ -93,19 +74,36 @@ namespace EducationalDesigner.Pages
                 e.Handled = true;
             }
         }
-        private void PasswordValidationTextBox(object sender, TextCompositionEventArgs e)
+        private void PasswordValidationTextBox(object sender, EventArgs e)
         {
-            Regex regex = new Regex(@"^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]");
-            e.Handled = !regex.IsMatch(e.Text);
-            if (!regex.IsMatch(e.Text))
+            Regex regex = new Regex(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$");
+            if (!regex.IsMatch(tbPassword.Password))
             {
                 PasswordValidationErr.Visibility = Visibility.Visible;
-                PasswordValidationErr.Text = "Только латиница, числа и спец. символы (!, _, $...)";
+                PasswordValidationErr.Text = "Пароль: только латиница, как минимум 8 символов, включая один символ верхнего и нижнего регистра и одну цифру";
+                btnRegister.IsEnabled = false;
             }
-            else if (regex.IsMatch(e.Text))
+            else if (regex.IsMatch(tbPassword.Password))
             {
                 PasswordValidationErr.Visibility = Visibility.Collapsed;
                 PasswordValidationErr.Text = "";
+                btnRegister.IsEnabled = true;
+            }
+        }
+
+        private void PasswordRepeatValidationTextBox(object sender, RoutedEventArgs e)
+        {
+            if (tbPassword.Password != tbPasswordRepeat.Password)
+            {
+                PasswordRepeatValidationErr.Visibility = Visibility.Visible;
+                PasswordRepeatValidationErr.Text = "Пароли не совпадают";
+                btnRegister.IsEnabled = false;
+            }
+            else
+            {
+                PasswordRepeatValidationErr.Visibility = Visibility.Collapsed;
+                PasswordRepeatValidationErr.Text = "";
+                btnRegister.IsEnabled = true;
             }
         }
 
@@ -115,8 +113,10 @@ namespace EducationalDesigner.Pages
             StringBuilder err = new StringBuilder();
             if (string.IsNullOrWhiteSpace(currentElem.Login))
                 err.AppendLine("Укажите логин");
-            if (string.IsNullOrWhiteSpace(currentElem.Password))
+            if (string.IsNullOrWhiteSpace(tbPassword.Password))
                 err.AppendLine("Укажите пароль");
+            if (string.IsNullOrWhiteSpace(tbPasswordRepeat.Password))
+                err.AppendLine("Повторите пароль");
             if (string.IsNullOrWhiteSpace(currentElem.Name))
                 err.AppendLine("Укажите имя");
             if (string.IsNullOrWhiteSpace(currentElem.Surname))
@@ -137,12 +137,7 @@ namespace EducationalDesigner.Pages
                 return;
             }
 
-            currentElem.Login = currentElem.Login.Replace(" ","");
-            currentElem.Password = currentElem.Password.Replace(" ", "");
-            currentElem.Name = currentElem.Name.Replace(" ", "");
-            currentElem.Surname = currentElem.Surname.Replace(" ", ""); ;
-            currentElem.Patronymic = currentElem.Patronymic.Replace(" ", "");
-            currentElem.Email = currentElem.Email.Replace(" ", "");
+            currentElem.Password = tbPassword.Password;
 
             if (App.CurrentUser == null)
             {

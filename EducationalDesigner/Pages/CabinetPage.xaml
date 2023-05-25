@@ -14,32 +14,48 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource BlockCommon}" Text="Логин:" Width="auto"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль:" Width="auto"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Имя:" Width="auto"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Фамилия:" Width="auto"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Отчество:" Width="auto"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Почта:" Width="auto"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource BlockCommon}" Text="Роль:" Width="auto"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource BlockCommon}" Name="tbLogin" Width="auto"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль:" Width="auto"/>
+                <StackPanel HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource BlockCommon}" Name="tbPassword" Width="auto"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Имя:" Width="auto"/>
+                <StackPanel HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource BlockCommon}" Name="tbName" Width="auto"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Фамилия:" Width="auto"/>
+                <StackPanel HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource BlockCommon}" Name="tbSurname" Width="auto"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Отчество:" Width="auto"/>
+                <StackPanel HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource BlockCommon}" Name="tbPatronymic" Width="auto"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Почта:" Width="auto"/>
+                <StackPanel HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource BlockCommon}" Name="tbEmail" Width="auto"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Роль:" Width="auto"/>
+                <StackPanel HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource BlockCommon}" Name="tbRole" Width="auto"/>
                 </StackPanel>
             </StackPanel>

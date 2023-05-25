@@ -16,14 +16,14 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged" Width="auto">
+            <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged" Width="150">
                 <ComboBoxItem Content="Без сортировки"></ComboBoxItem>
                 <ComboBoxItem Content="По возрастанию (Логин)"></ComboBoxItem>
                 <ComboBoxItem Content="По убыванию (Логин)"></ComboBoxItem>
                 <ComboBoxItem Content="По возрастанию (ФИО)"></ComboBoxItem>
                 <ComboBoxItem Content="По убыванию (ФИО)"></ComboBoxItem>
             </ComboBox>
-            <ComboBox Name="cboxOrdBy" SelectionChanged="CBoxOrdBy_SelectionChanged" DisplayMemberPath="RoleName" SelectedIndex="0" Width="auto"/>
+            <ComboBox Name="cboxOrdBy" SelectionChanged="CBoxOrdBy_SelectionChanged" DisplayMemberPath="RoleName" SelectedIndex="0" Width="150"/>
             <TextBox x:Name="tbSearch" TextChanged="TbSearch_TextChanged"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1">
@@ -34,7 +34,7 @@
                 <Style TargetType="{x:Type ListViewItem}">
                     <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
                     <Setter Property="Height" Value="50"/>
-                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="FontSize" Value="14"/>
                     <Setter Property="FontWeight" Value="Bold"/>
                 </Style>
             </ListView.ItemContainerStyle>
