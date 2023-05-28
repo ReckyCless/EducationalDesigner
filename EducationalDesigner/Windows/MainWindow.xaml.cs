@@ -70,51 +70,62 @@ namespace EducationalDesigner
             }
             else
             {
-                btnBack.Visibility = Visibility.Hidden;
+                btnBack.Visibility = Visibility.Collapsed;
             }
-
         }
 
         // Menu Control
-        private void AuthorsTable_Click(object sender, RoutedEventArgs e)
+        private void BtnEducationalProgram_Clicked(object sender, RoutedEventArgs e)
         {
-            frameMain.Navigate(new AuthorsPage());
-        }
-        private void EducationalProgramTable_Click(object sender, RoutedEventArgs e)
-        {
+            RejectChanges();
             frameMain.Navigate(new EducationalProgramPage());
         }
-        private void CurriculumTable_Click(object sender, RoutedEventArgs e)
+        private void BtnCurriculum_Clicked(object sender, RoutedEventArgs e)
         {
+            RejectChanges();
             frameMain.Navigate(new CurriculumPage());
         }
-        private void UsersTable_Click(object sender, RoutedEventArgs e)
+        private void BtnAuthors_Clicked(object sender, RoutedEventArgs e)
         {
+            RejectChanges();
+            frameMain.Navigate(new AuthorsPage());
+        }
+        private void BtnUsers_Clicked(object sender, RoutedEventArgs e)
+        {
+            RejectChanges();
             frameMain.Navigate(new UsersPage());
         }
-        private void RolesTable_Click(object sender, RoutedEventArgs e)
+        private void BtnDepartment_Clicked(object sender, RoutedEventArgs e)
         {
-            frameMain.Navigate(new RolesPage());
-        }
-        private void DepartmentTable_Click(object sender, RoutedEventArgs e)
-        {
+            RejectChanges();
             frameMain.Navigate(new DepartmentPage());
         }
-        private void StudyFieldsTable_Click(object sender, RoutedEventArgs e)
+        private void BtnStudyField_Clicked(object sender, RoutedEventArgs e)
         {
+            RejectChanges();
             frameMain.Navigate(new StudyFieldPage());
         }
-        private void QualificationTable_Click(object sender, RoutedEventArgs e)
+        private void BtnQualification_Clicked(object sender, RoutedEventArgs e)
         {
+            RejectChanges();
             frameMain.Navigate(new QualificationPage());
         }
+        private void BtnRoles_Clicked(object sender, RoutedEventArgs e)
+        {
+            RejectChanges();
+            frameMain.Navigate(new RolesPage());
+        }
+
+
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            btnBack.Visibility = Visibility.Hidden;
+            RejectChanges();
+            /*btnBack.Visibility = Visibility.Collapsed;*/
             frameMain.Navigate(new LoginPage());
         }
         private void CabinetGo_Click(object sender, RoutedEventArgs e)
         {
+            RejectChanges();
             frameMain.Navigate(new CabinetPage());
         }
     }

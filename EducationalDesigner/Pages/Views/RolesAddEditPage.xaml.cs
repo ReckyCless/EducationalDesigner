@@ -53,7 +53,7 @@ namespace EducationalDesigner.Pages.Views
                 err.AppendLine("Укажите название");
             if (err.Length > 0)
             {
-                MessageBox.Show(err.ToString());
+                MessageBox.Show(err.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

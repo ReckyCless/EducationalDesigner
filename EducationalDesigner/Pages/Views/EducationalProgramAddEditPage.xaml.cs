@@ -73,7 +73,7 @@ namespace EducationalDesigner.Pages.Views
 
             if (err.Length > 0)
             {
-                MessageBox.Show(err.ToString());
+                MessageBox.Show(err.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

@@ -10,11 +10,13 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <ComboBox Name="cboxSortBy" SelectionChanged="CBoxSortBy_SelectionChanged" Width="150">
                 <ComboBoxItem Content="Без сортировки"></ComboBoxItem>
@@ -23,6 +25,10 @@
                 <ComboBoxItem Content="По возрастанию (Дата)"></ComboBoxItem>
                 <ComboBoxItem Content="По убыванию (Дата)"></ComboBoxItem>
             </ComboBox>
+            <TextBox x:Name="tbSearch" TextChanged="TbSearch_TextChanged"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
             <ComboBox Name="cboxOrdByStudyField" SelectionChanged="CBoxOrdByStudyField_SelectionChanged" DisplayMemberPath="StudyFieldName" SelectedIndex="0" Width="150"/>
             <ComboBox Name="cboxOrdByQualification" SelectionChanged="CBoxOrdByQualification_SelectionChanged" DisplayMemberPath="QualificationName" SelectedIndex="0" Width="150"/>
             <ComboBox Name="cboxOrdByAuthor" SelectionChanged="CBoxOrdByAuthor_SelectionChanged" SelectedIndex="0" Width="150">
@@ -40,12 +46,12 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBox x:Name="tbSearch" TextChanged="TbSearch_TextChanged"/>
         </StackPanel>
-        <StackPanel Grid.Row="1">
+        
+        <StackPanel Grid.Row="2">
             <TextBlock Style="{StaticResource BlockCommon}" TextAlignment="Center" Name="tbkItemCounter" Width="auto"/>
         </StackPanel>
-        <ListView Grid.Row="2" Name="LViewEducationalProgram" HorizontalAlignment="Stretch" >
+        <ListView Grid.Row="3" Name="LViewEducationalProgram" HorizontalAlignment="Stretch" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
@@ -60,7 +66,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="1">
+                            <StackPanel Grid.Column="2">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Style="{StaticResource BlockStrechMain}" 
                                             Text="{Binding ProgramName}"/>
@@ -98,14 +104,14 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Row="3" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="4" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Height="35" Width="50" Content="←" FontSize="22" Name="btnPagePrev" Click="BtnPagePrev_Click"/>
             <ComboBox Width="auto" Name="cboxCurrentPageSelection" SelectionChanged="CBoxCurrentPageSelection_SelectionChanged" SelectedIndex="0"/>
             <Button Height="35" Width="50" Content="→" FontSize="22" Name="btnPageNext" Click="BtnPageNext_Click"/>
         </StackPanel>
-        <Button HorizontalAlignment="Right" Grid.Row="3"
+        <Button HorizontalAlignment="Right" Grid.Row="4"
                 Content="Добавить" Visibility="Collapsed" Name="btnAdd" Click="BtnAdd_Click"/>
-        <Button HorizontalAlignment="Left" Grid.Row="3"
+        <Button HorizontalAlignment="Left" Grid.Row="4"
                 Content="Удалить" Visibility="Collapsed" Name="btnDelete" Click="BtnDelete_Click"/>
     </Grid>
 </Page>

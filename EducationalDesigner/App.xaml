@@ -31,10 +31,10 @@
         </Style>
         <Style TargetType="TextBlock" x:Key="BlockHeader">
             <Setter Property="Margin" Value="5"></Setter>
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
         </Style>
@@ -181,10 +181,9 @@
             <Setter Property="Height" Value="250"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
-
-        <!--// !!!!! //-->
-        <!--// Menu styles //-->
         
+        <!--// DropDown Menu (For Personal cabinet) //-->
+
         <Style x:Key="Main_MenuItem" TargetType="MenuItem">
             <Setter Property="Template">
                 <Setter.Value>
@@ -193,13 +192,6 @@
                                 Background="Transparent"
                                 BorderThickness="0">
                             <Grid>
-                                <!--// Icon //-->
-                                <ContentPresenter ContentSource="Icon"
-                                                  HorizontalAlignment="Left"
-                                                  VerticalAlignment="Center"
-                                                  Height="22"
-                                                  Width="22"
-                                                  Margin="8,0,0,0" />
                                 <!--// Text //-->
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="Black"
@@ -226,7 +218,7 @@
             </Setter>
         </Style>
 
-        <Style x:Key="Tables_MenuItem_With_Dropdown"
+        <Style x:Key="Cabinet_MenuItem_With_Dropdown"
                TargetType="MenuItem">
             <Setter Property="Template">
                 <Setter.Value>
@@ -305,7 +297,7 @@
             </Setter>
         </Style>
 
-        <Style x:Key="Services_Sub_MenuItem"
+        <Style x:Key="Cabinet_Sub_MenuItem"
                TargetType="MenuItem">
             <Setter Property="Template">
                 <Setter.Value>
@@ -352,23 +344,17 @@
             </Setter>
         </Style>
 
-        <Style x:Key="Nested_MenuItem_With_Dropdown"
-               TargetType="MenuItem">
+        <!--// Side Menu Styles //-->
+
+
+        <Style x:Key="SidePanel_MenuItem" TargetType="MenuItem">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type MenuItem}">
                         <Border x:Name="border"
-                                Background="{StaticResource ColorPrimary}"
+                                Background="Transparent"
                                 BorderThickness="0">
                             <Grid>
-                                <!--// Icon //-->
-                                <ContentPresenter ContentSource="Icon"
-                                                  HorizontalAlignment="Left"
-                                                  VerticalAlignment="Center"
-                                                  Height="18"
-                                                  Width="18"
-                                                  Margin="8,0,0,0" />
-
                                 <!--// Text //-->
                                 <ContentPresenter ContentSource="Header"
                                                   TextBlock.Foreground="Black"
@@ -377,114 +363,69 @@
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
                                                   Margin="15,0,0,0" />
-
-                                <Grid x:Name="Highlighter"
-                                      Height="35"
-                                      Width="2"
-                                      Background="#3E3C3D"
-                                      HorizontalAlignment="Left"
-                                      VerticalAlignment="Center"
-                                      Visibility="Collapsed" />
-
-                                <!--// Popup //-->
-                                <Popup x:Name="PART_Popup"
-                                       AllowsTransparency="True"
-                                       IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                                       Placement="Right"
-                                       PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
-
-                                    <Border x:Name="SubMenuBorder"
-                                            Background="#3E3C3D"
-                                            BorderBrush="#3E3C3D">
-
-                                        <ScrollViewer x:Name="SubMenuScrollViewer"
-                                                      Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,TypeInTargetAssembly={x:Type FrameworkElement}}}">
-
-                                            <Grid RenderOptions.ClearTypeHint="Enabled">
-
-                                                <Canvas HorizontalAlignment="Left"
-                                                        VerticalAlignment="Top" />
-
-                                                <ItemsPresenter x:Name="ItemsPresenter" />
-
-                                            </Grid>
-                                        </ScrollViewer>
-                                    </Border>
-                                </Popup>
                             </Grid>
                         </Border>
-
                         <ControlTemplate.Triggers>
-
-                            <Trigger Property="IsSuspendingPopupAnimation"
-                                     Value="True">
-                                <Setter Property="PopupAnimation"
-                                        TargetName="PART_Popup"
-                                        Value="None" />
-                            </Trigger>
                             <Trigger Property="IsHighlighted"
                                      Value="True">
                                 <Setter Property="Background"
                                         TargetName="border"
-                                        Value="#BBBBBB" />
+                                        Value="#FFFFB267" />
                                 <Setter Property="BorderBrush"
                                         TargetName="border"
-                                        Value="#BBBBBB" />
-                                <Setter Property="Visibility"
-                                        TargetName="Highlighter"
-                                        Value="Visible" />
+                                        Value="#FFFFB267" />
                             </Trigger>
-
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <Style x:Key="Mobile_App_Sub_MenuItem"
-               TargetType="MenuItem">
+        <Style x:Key="menuButton" TargetType="Button">
+            <!--Normal button style-->
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="5,0,0,5"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type MenuItem}">
-                        <Border x:Name="border"
-                                Background="{StaticResource ColorPrimary}"
-                                BorderThickness="0">
-                            <Grid>
-                                <!--// Text //-->
-                                <ContentPresenter ContentSource="Header"
-                                                  TextBlock.Foreground="Black"
-                                                  TextBlock.FontFamily="Rubik Medium"
-                                                  TextBlock.FontSize="15"
-                                                  HorizontalAlignment="Left"
-                                                  VerticalAlignment="Center"
-                                                  Margin="15,0,0,0" />
-
-                                <Grid x:Name="Highlighter"
-                                      Height="35"
-                                      Width="2"
-                                      Background="#3E3C3D"
-                                      HorizontalAlignment="Left"
-                                      VerticalAlignment="Center"
-                                      Visibility="Collapsed" />
-                            </Grid>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderThickness="4,0,0,0"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsHighlighted"
-                                     Value="True">
-                                <Setter Property="Background"
-                                        TargetName="border"
-                                        Value="#BBBBBB" />
-                                <Setter Property="BorderBrush"
-                                        TargetName="border"
-                                        Value="#BBBBBB" />
-                                <Setter Property="Visibility"
-                                        TargetName="Highlighter"
-                                        Value="Visible" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <!--Button Style on hover-->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Margin" Value="5,0,0,5"/>
+                    <Setter Property="Background" Value="#FFFFB267"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
+                </Trigger>
+                <!--Activated button style-->
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Margin" Value="0,0,0,5"/>
+                    <Setter Property="Background" Value="#FFFFB267"/>
+                    <Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
+                    <Setter Property="BorderBrush" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+            <!--Menu button text-->
+        <Style x:Key="menuButtonText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Width" Value="195"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
         <!--// Grid //-->

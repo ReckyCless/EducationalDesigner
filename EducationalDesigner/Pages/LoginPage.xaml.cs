@@ -38,17 +38,19 @@ namespace EducationalDesigner.Pages
                 // Controls Visibility
                 if (currentUser.Role == 1 || currentUser.Role == 3)
                 {
-                    currentWindow.AdminPanel.Visibility = Visibility.Visible;
-                    currentWindow.AdminUsPanel.Visibility = Visibility.Visible;
-                    currentWindow.AdminSPanel.Visibility = Visibility.Visible;
+                    currentWindow.AdminSidePanel.Visibility = Visibility.Visible;
+                    currentWindow.UserSidePanel.Visibility = Visibility.Visible;
                     currentWindow.CabinetMenu.Visibility = Visibility.Visible;
                 }
                 else if (currentUser.Role == 2)
                 {
-                    currentWindow.AdminPanel.Visibility = Visibility.Visible;
+                    currentWindow.UserSidePanel.Visibility = Visibility.Visible;
                     currentWindow.CabinetMenu.Visibility = Visibility.Visible;
                 }
+
+                // Totaly must chan
                 NavigationService.Navigate(new Views.EducationalProgramPage());
+                
             }
             else
             {
@@ -64,9 +66,8 @@ namespace EducationalDesigner.Pages
             var currentWindow = Application.Current.Windows
                 .Cast<Window>()
                 .FirstOrDefault(window => window is MainWindow) as MainWindow;
-            currentWindow.AdminPanel.Visibility = Visibility.Collapsed;
-            currentWindow.AdminSPanel.Visibility = Visibility.Collapsed;
-            currentWindow.AdminUsPanel.Visibility = Visibility.Collapsed;
+            currentWindow.AdminSidePanel.Visibility = Visibility.Collapsed;
+            currentWindow.UserSidePanel.Visibility = Visibility.Collapsed;
             currentWindow.CabinetMenu.Visibility = Visibility.Collapsed;
         }
 

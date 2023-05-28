@@ -12,56 +12,62 @@
     <Grid>
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel VerticalAlignment="Center">
-                <StackPanel HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Логин:" Width="auto"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel VerticalAlignment="Center">
+                    <StackPanel HorizontalAlignment="Right">
+                        <TextBlock Style="{StaticResource BlockCommon}" Text="Логин:" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right">
+                        <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль:" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right">
+                        <TextBlock Style="{StaticResource BlockCommon}" Text="Имя:" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right">
+                        <TextBlock Style="{StaticResource BlockCommon}" Text="Фамилия:" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right">
+                        <TextBlock Style="{StaticResource BlockCommon}" Text="Отчество:" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right">
+                        <TextBlock Style="{StaticResource BlockCommon}" Text="Почта:" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right">
+                        <TextBlock Style="{StaticResource BlockCommon}" Text="Роль:" Width="auto"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль:" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Имя:" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Фамилия:" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Отчество:" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Почта:" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right">
-                    <TextBlock Style="{StaticResource BlockCommon}" Text="Роль:" Width="auto"/>
+                <StackPanel VerticalAlignment="Center">
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource BlockCommon}" Name="tbLogin" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource BlockCommon}" Name="tbPassword" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource BlockCommon}" Name="tbName" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource BlockCommon}" Name="tbSurname" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource BlockCommon}" Name="tbPatronymic" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource BlockCommon}" Name="tbEmail" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource BlockCommon}" Name="tbRole" Width="auto"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <StackPanel VerticalAlignment="Center">
-                <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource BlockCommon}" Name="tbLogin" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource BlockCommon}" Name="tbPassword" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource BlockCommon}" Name="tbName" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource BlockCommon}" Name="tbSurname" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource BlockCommon}" Name="tbPatronymic" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource BlockCommon}" Name="tbEmail" Width="auto"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource BlockCommon}" Name="tbRole" Width="auto"/>
-                </StackPanel>
+            
+            <StackPanel>
+                <Button Height="30" Width="200" Margin="0 25 0 0" Name="btnGoEdit" Click="BtnGoEdit_Click" Content="Редактировать"/>
             </StackPanel>
+            
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Height="30" Width="200" Margin="0 0 0 50" Name="btnGoEdit" Click="BtnGoEdit_Click" Content="Редактировать"/>
-        </StackPanel>
+        
     </Grid>
 </Page>

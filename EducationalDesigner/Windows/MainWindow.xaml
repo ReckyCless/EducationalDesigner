@@ -5,130 +5,141 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EducationalDesigner"
         mc:Ignorable="d"
-        Title="Конструктор ОП" Height="650" Width="1200" MinHeight="650" MinWidth="800" Icon="/Resources/icon.ico" Loaded="Window_Loaded">
+        Title="Конструктор ОП" Height="650" Width="1200" MinHeight="500" MinWidth="950" Icon="/Resources/icon.ico" Loaded="Window_Loaded">
 
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="85"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="{StaticResource ColorSecondary}"/>
-        <Grid Grid.Row="2" Background="{StaticResource ColorSecondary}"/>
-        <Image Source="/Resources/icon.ico" HorizontalAlignment="Left" Margin="30,5,0,0"></Image>
-
-        <Menu Height="60"
-              Width="auto"
-              x:Name="MenuG"
-              Background="Transparent"
-              VerticalAlignment="Top"
-              HorizontalAlignment="Right"
-              Margin="0,15,0,0">
-
-            <!--// Tables //-->
-            <MenuItem Header="ТАБЛИЦЫ"
-                      Margin="0 0 0 0"
-                      Height="60"
-                      Width="auto"
-                        Visibility="Collapsed"
-                        x:Name="AdminPanel"
-                          Style="{StaticResource Tables_MenuItem_With_Dropdown}">
-
-                <MenuItem Header="АВТОРЫ"
-                          Height="35"
-                          Width="275"
-                          Click="AuthorsTable_Click"
-                              Style="{StaticResource Services_Sub_MenuItem}">
-                </MenuItem>
-
-                <MenuItem Header="ОБРАЗОВАТЕЛЬНЫЕ ПРОГРАММЫ"
-                          Height="35"
-                          Width="275"
-                          Click="EducationalProgramTable_Click"
-                              Style="{StaticResource Services_Sub_MenuItem}">
-                </MenuItem>
-
-                <MenuItem Header="УЧЕБНЫЕ ПЛАНЫ"
-                          Height="35"
-                          Width="275"
-                          Click="CurriculumTable_Click"
-                              Style="{StaticResource Services_Sub_MenuItem}">
-                </MenuItem>
-
-                <MenuItem Header="ПОЛЬЗОВАТЕЛИ"
-                          Height="35"
-                          Width="275"
-                          Visibility="Collapsed"
-                            x:Name="AdminUsPanel"
-                                Click="UsersTable_Click"
-                              Style="{StaticResource Services_Sub_MenuItem}">
-                </MenuItem>
-
-                <MenuItem Header="СПРАВОЧНИКИ"
-                          Height="35"
-                          Width="275"
-                          Visibility="Collapsed"
-                            x:Name="AdminSPanel"
-                              Style="{StaticResource Nested_MenuItem_With_Dropdown}">
-
-                    <MenuItem Header="РОЛИ"
-                              Height="35"
-                              Width="275"
-                              Click="RolesTable_Click"
-                                  Style="{StaticResource Mobile_App_Sub_MenuItem}">
-                    </MenuItem>
-
-                    <MenuItem Header="ФАКУЛЬТЕТЫ"
-                              Height="35"
-                              Width="275"
-                              Click="DepartmentTable_Click"
-                                  Style="{StaticResource Mobile_App_Sub_MenuItem}">
-                    </MenuItem>
-
-                    <MenuItem Header="НАПРАВЛЕНИЯ"
-                              Height="35"
-                              Width="275"
-                              Click="StudyFieldsTable_Click"
-                                  Style="{StaticResource Mobile_App_Sub_MenuItem}">
-                    </MenuItem>
-
-                    <MenuItem Header="КВАЛИФИКАЦИИ"
-                              Height="35"
-                              Width="275"
-                              Click="QualificationTable_Click"
-                                  Style="{StaticResource Mobile_App_Sub_MenuItem}">
-                    </MenuItem>
-
-                </MenuItem>
-
-            </MenuItem>
-            <!--// Cabinet //-->
-            <MenuItem Header="ЛИЧНЫЙ КАБИНЕТ"
+        <Grid Grid.Row="0" Grid.Column="1" Background="{StaticResource ColorSecondary}"/>
+        <Grid Grid.Row="0" Grid.Column="0" Background="{StaticResource ColorSecondary}"/>
+        <Grid Grid.Row="1" Grid.Column="0" Background="{StaticResource ColorSecondary}"/>
+        
+        <!--// Top Panel //-->
+        <StackPanel Orientation="Horizontal" Margin="10 5 5 2">
+            <Image Source="/Resources/icon.ico" HorizontalAlignment="Left" Margin="5,5,10,0"/>
+            <TextBlock Text="КОП" Style="{StaticResource BlockCommonLeft}" FontSize="30" FontWeight="Bold" Width="auto"/>
+        </StackPanel>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <TextBlock Style="{StaticResource BlockHeader}" Text="{Binding ElementName=frameMain, Path=Content.Title}"/>
+            
+        <!-- Dropdown Menu -->
+            <Menu Height="60"
+                  Width="auto"
+                  x:Name="MenuG"
+                  Background="Transparent"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Right"
+                  Margin="0,0,200,0">
+                
+                <MenuItem Header="ЛИЧНЫЙ КАБИНЕТ"
                       Visibility="Collapsed"
                       Height="60"
                       Margin="10 0 10 0"
                       x:Name="CabinetMenu"
                       Width="auto"
-                      Style="{StaticResource Tables_MenuItem_With_Dropdown}">
-                
-                <MenuItem Header="ЛИЧНЫЙ КАБИНЕТ"
+                      Style="{StaticResource Cabinet_MenuItem_With_Dropdown}">
+
+                    <MenuItem Header="ЛИЧНЫЙ КАБИНЕТ"
                           Height="35"
                           Width="200"
                             Click="CabinetGo_Click"
-                              Style="{StaticResource Services_Sub_MenuItem}">
-                </MenuItem>
+                              Style="{StaticResource Cabinet_Sub_MenuItem}">
+                    </MenuItem>
 
-                <MenuItem Header="ВЫХОД"
+                    <MenuItem Header="ВЫХОД"
                           Height="35"
                           Width="200"
                             Click="LogOut_Click"
-                              Style="{StaticResource Services_Sub_MenuItem}">
+                              Style="{StaticResource Cabinet_Sub_MenuItem}">
+                    </MenuItem>
                 </MenuItem>
-            </MenuItem>
-        </Menu>
-        <TextBlock Style="{StaticResource BlockHeader}" Text="{Binding ElementName=frameMain, Path=Content.Title}"/>
-        <Frame Name="frameMain" NavigationUIVisibility="Hidden" Grid.Row="1" ContentRendered="FrameMain_ContentRendered"/>
-        <Button Content="Назад" HorizontalAlignment="Center" Name="btnBack" Click="BtnBack_Click" Grid.Row="2"></Button>
+                </Menu>
+                <Button Height="40" Width="150" FontSize="20" Content="Назад" HorizontalAlignment="Right" Margin="0 0 20 0" Name="btnBack" Click="BtnBack_Click"/>
+        </Grid>
+        <!--// Side Nav Menu //-->
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+            <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
+
+                <StackPanel x:Name="UserSidePanel">
+                    <Button Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource ColorPrimary}"
+                                 x:Name="btnEducationalProgram"
+                                 Click="BtnEducationalProgram_Clicked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Образовательные программы" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource ColorPrimary}"
+                                 x:Name="btnCurriculum"
+                                 Click="BtnCurriculum_Clicked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Учебные планы" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource ColorPrimary}"
+                                 x:Name="btnAuthors"
+                                 Click="BtnAuthors_Clicked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Авторы" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <StackPanel x:Name="AdminSidePanel">
+                    <Button Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource ColorPrimary}"
+                                 x:Name="btnUsers"
+                                 Click="BtnUsers_Clicked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Пользователи" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource ColorPrimary}"
+                                 x:Name="btnDepartment"
+                                 Click="BtnDepartment_Clicked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Факультеты" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource ColorPrimary}"
+                                 x:Name="btnStudyField"
+                                 Click="BtnStudyField_Clicked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Направления" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource ColorPrimary}"
+                                 x:Name="btnQualification"
+                                 Click="BtnQualification_Clicked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Квалификации" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource ColorPrimary}"
+                                 x:Name="btnRoles"
+                                 Click="BtnRoles_Clicked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Роли" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <!--// Content //-->
+        <Border BorderThickness="2, 2, 0, 0" BorderBrush="{StaticResource ColorAccent}" Grid.Row="1" Grid.Column="1">
+            <Frame Name="frameMain" NavigationUIVisibility="Hidden" ContentRendered="FrameMain_ContentRendered"/>
+        </Border>
     </Grid>
 </Window>
