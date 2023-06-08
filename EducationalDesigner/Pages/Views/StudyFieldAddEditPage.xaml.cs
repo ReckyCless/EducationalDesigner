@@ -61,6 +61,7 @@ namespace EducationalDesigner.Pages.Views
                 return;
             }
 
+            currentElem.StudyFieldName = currentElem.StudyFieldName.Trim();
             currentElem.StudyFieldName = Regex.Replace(currentElem.StudyFieldName, @"\s+", " ");
 
             if (currentElem.StudyFieldId == 0)

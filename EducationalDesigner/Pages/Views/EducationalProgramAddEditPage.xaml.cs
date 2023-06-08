@@ -77,6 +77,7 @@ namespace EducationalDesigner.Pages.Views
                 return;
             }
 
+            currentElem.ProgramName = currentElem.ProgramName.Trim();
             currentElem.ProgramName = Regex.Replace(currentElem.ProgramName, @"\s+", " ");
 
             if (currentElem.EducationalProgramId == 0)

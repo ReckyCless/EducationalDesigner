@@ -57,6 +57,7 @@ namespace EducationalDesigner.Pages.Views
                 return;
             }
 
+            currentElem.DepartmentName = currentElem.DepartmentName.Trim();
             currentElem.DepartmentName = Regex.Replace(currentElem.DepartmentName, @"\s+", " ");
 
             if (currentElem.DepartmentId == 0)

@@ -57,6 +57,7 @@ namespace EducationalDesigner.Pages.Views
                 return;
             }
 
+            currentElem.RoleName = currentElem.RoleName.Trim();
             currentElem.RoleName = Regex.Replace(currentElem.RoleName, @"\s+", " ");
 
             if (currentElem.RoleId == 0)

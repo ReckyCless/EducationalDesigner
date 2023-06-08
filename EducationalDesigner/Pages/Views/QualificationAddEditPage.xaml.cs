@@ -57,6 +57,7 @@ namespace EducationalDesigner.Pages.Views
                 return;
             }
 
+            currentElem.QualificationName = currentElem.QualificationName.Trim();
             currentElem.QualificationName = Regex.Replace(currentElem.QualificationName, @"\s+", " ");
 
             if (currentElem.QualificationId == 0)
